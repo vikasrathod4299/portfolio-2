@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ----------------------------- */
+/* Fonts                         */
+/* ----------------------------- */
+@layer base {
+  @font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(''), url('./assets/fonts/nunito.woff2') format('woff2'),
+      url('./assets/fonts/nunito.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(''), url('./assets/fonts/jetbrains-mono.woff2') format('woff2'),
+      url('./assets/fonts/jetbrains-mono.woff') format('woff');
+  }
+}
+
+/* Default body styles */
+body {
+  @apply m-0;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ----------------------------- */
+/* Design Tokens (Colors, Radius)*/
+/* ----------------------------- */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklab(68.47% -0.07982 -0.12456);
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.871 0.006 286.286);
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: oklch(21.033% 0.00588 285.832);
+  --foreground: oklch(98.511% 0.00011 271.152);
+  --card: oklch(0.141 0.005 285.823);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(68.47% 0.14794 237.348);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.274 0.006 286.033);
+  --input: oklch(0.274 0.006 286.033);
+  --ring: oklch(0.442 0.017 285.786);
+}
+
+/* Map variables to Tailwind theme tokens */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ----------------------------- */
+/* Base Styles                   */
+/* ----------------------------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body,
+  #root {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  #root {
+    @apply flex min-h-screen flex-col;
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    @apply h-3 w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-md bg-muted-foreground/30 hover:bg-muted-foreground/50;
+  }
+
+  /* Text selection */
+  ::-moz-selection {
+    @apply bg-primary text-primary-foreground;
+  }
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground font-medium;
+  }
+
+  h1 { @apply text-2xl; }
+  h2 { @apply text-xl; }
+  h3 { @apply text-lg; }
+  h4 { @apply text-base; }
+  h5 { @apply text-sm; }
+  h6 { @apply text-xs; }
+}
+
+/* ----------------------------- */
+/* Syntax Highlighting           */
+/* ----------------------------- */
+.prose pre code {
+  font-variant-ligatures: none;
+  @apply rounded-none p-1;
+}
+
+[class*='language-'] .namespace {
+  @apply opacity-80;
+}
+
+.token.attr-name,
+.token.builtin,
+.token.class {
+  @apply text-yellow-500 dark:text-yellow-300;
+}
+
+.token.id,
+.token.important {
+  @apply font-bold text-purple-500 dark:text-purple-400;
+}
+
+.token.symbol,
+.token.keyword,
+.token.constant,
+.token.boolean,
+.token.atrule,
+.token.function {
+  @apply text-purple-500 dark:text-purple-400;
+}
+
+.token.unit,
+.token.number {
+  @apply text-red-400 dark:text-red-300;
+}
+
+.token.doctype,
+.token.prolog,
+.token.comment {
+  @apply text-muted-foreground;
+}
+
+.token.char,
+.token.cdata,
+.token.inserted,
+.token.punctuation,
+.token.operator,
+.token.property {
+  @apply text-blue-500 dark:text-blue-300;
+}
+
+.token.regex,
+.token.class-name,
+.token.hexcode {
+  @apply text-yellow-500 dark:text-yellow-300;
+}
+
+.token.string,
+.token.pseudo-element,
+.token.attribute,
+.token.attr-value,
+.token.pseudo-class {
+  @apply text-green-500 dark:text-green-400;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code,
+.token.url,
+.token.variable,
+.token.tag,
+.token.entity,
+.token.deleted,
+.token.selector {
+  @apply text-red-500 dark:text-red-400;
+}
+
+.line-number::before {
+  content: attr(line);
+  @apply mr-6 text-muted-foreground;
+}
