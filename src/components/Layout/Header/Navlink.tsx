@@ -17,9 +17,9 @@ export default function Navlink({href, label, onClick}: Props) {
         <Link
             to={href}
             className={cx('px-5 py-5 transition-colors sm:rounded sm:px-3 sm:py-2', {
-                    'bg-primary-300 text-primary-500 dark:bg-primary-900 dark:text-primary-200':
+                    'bg-sky-300/30 text-sky-500 dark:bg-sky-900/30 dark:text-sky-200':
                     active,
-                    'bg-zinc-200/80 dark:hover:bg-zinc-800/20': !active
+                    'hover:bg-zinc-200/20 dark:hover:bg-zinc-200/10': !active
                 })
             }
             onClick={onClick}
