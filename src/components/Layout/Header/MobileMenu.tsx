@@ -14,25 +14,26 @@ export default function MobileMenu({children, isOpen}: MobileMenuProps) {
 
     useEffect(() => { 
         let timer: ReturnType<typeof setTimeout>
-        if(isOpening){
+
+        if(isOpen){
             setIsOpening(true)
             setIsShown(true)
 
-            timer = setTimeout(() => {
-                setIsOpening(false)
-            }, 300)
+            timer = setTimeout(() => setIsOpening(false), 300)
         }else{
             setIsClosing(true)
+
             timer = setTimeout(() => {
-                setIsClosing(false)
                 setIsShown(false)
+                setIsClosing(false)
             }, 300)
         }
         return () => clearTimeout(timer)
     },[isOpen])
 
-    if(!isShown) return null
 
+    if (!isShown) return null
+    
     return  (
        <div className={
         classNames('fixed z-50 mt-16 flex w-full flex-col shadow backdrop-blur-md sm:hidden',
