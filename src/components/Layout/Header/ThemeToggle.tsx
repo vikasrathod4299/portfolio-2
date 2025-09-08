@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Sun, Moon } from 'lucide-react'
+import { IconSun, IconMoon} from '@tabler/icons-react'
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>(
@@ -16,7 +16,7 @@ export default function ThemeToggle() {
       className="rounded px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
     >
-      {theme === 'dark' ? <Sun /> : <Moon />}
+      {theme === 'dark' ? <IconSun /> : <IconMoon />}
     </button>
   )
 }

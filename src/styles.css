@@ -124,7 +124,7 @@ code {
   html,
   body,
   #root {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-zinc-600 antialiased dark:bg-zinc-900 dark:text-zinc-400;
   }
 
   #root {

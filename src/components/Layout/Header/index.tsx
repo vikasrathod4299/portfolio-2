@@ -1,4 +1,4 @@
-import { X, AlignLeft } from 'lucide-react'
+import { IconX, IconAlignLeft } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import Navlink from './Navlink'
@@ -37,7 +37,7 @@ export default function Header() {
     <>
       <header
         className={classNames(
-          'z-50 bg-white fixed bg-opacity-70 transition-shadow dark:bg-zinc-900 dark:bg-opacity-90',
+          ' bg-white fixed bg-opacity-70 transition-shadow dark:bg-zinc-900 dark:bg-opacity-90',
           'fixed w-full backdrop-blur-md',
           'h-16',
           { shadow: isScrolled },
@@ -48,7 +48,7 @@ export default function Header() {
             className="sm:hidden"
             onClick={() => setMenuShown(!menuShown)}
           >
-            {menuShown ? <X /> : <AlignLeft />}
+            {menuShown ? <IconX /> : <IconAlignLeft />}
           </button>
           <h1 className="sm:text-3xl">Vikas Rathod</h1>
           <nav className="hidden gap-3 sm:flex">
