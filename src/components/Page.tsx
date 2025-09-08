@@ -18,7 +18,7 @@ export default function Page({ children, ...customMeta }: Props) {
     title: 'Vikas Rathod',
     description:
       'Software engineer with experience in delivering clean, elegant and efficent code.',
-    image: `${import.meta.env.VITE_WEBSITE_DOMAIN}/media/profile.jpg`,
+    image: `${import.meta.env.VITE_WEBSITE_DOMAIN}/media/profile.jpeg`,
     type: 'website',
     ...customMeta
   };

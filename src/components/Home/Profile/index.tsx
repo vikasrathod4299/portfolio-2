@@ -66,7 +66,7 @@ export default function Profile() {
 
           {/* Image (in front) */}
           <img
-            src="/media/profile.jpg"
+            src="/media/profile.jpeg"
             alt="Vikas Rathod"
             className="relative z-10 h-32 w-32 rounded-full object-cover"
           />
