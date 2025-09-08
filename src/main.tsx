@@ -10,7 +10,6 @@ import {
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import TanStackQueryDemo from './routes/demo.tanstack-query.tsx'
 
-import Header from './components/Layout/Header/index.tsx'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
 
@@ -18,7 +17,6 @@ import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 
 import App from './App.tsx'
-import Layout from './components/Layout/index.tsx'
 
 const rootRoute = createRootRoute({
   component: () => (

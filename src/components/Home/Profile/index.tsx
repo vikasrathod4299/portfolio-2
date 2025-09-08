@@ -6,7 +6,6 @@ import {
   IconBrandLinkedin,
   IconMail,
   IconBrandTwitter,
-  IconDownload,
 } from '@tabler/icons-react'
 import SocialIcon from './SocialIcons'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
