@@ -18,7 +18,7 @@ export default function Page({ children, ...customMeta }: Props) {
     title: 'Vikas Rathod',
     description:
       'Software engineer with experience in delivering clean, elegant and efficent code.',
-    image: `${import.meta.env.VITE_WEBSITE_DOMAIN}/media/profile.jpeg`,
+    image: `/media/profile.jpeg`,
     type: 'website',
     ...customMeta
   };
@@ -68,12 +68,12 @@ export default function Page({ children, ...customMeta }: Props) {
     setMetaTag('description', description);
     setMetaTag('og:url', url, true);
     setMetaTag('og:type', type, true);
-    setMetaTag('og:site_name', 'Artun Çolak', true);
+    setMetaTag('og:site_name', 'Vikas Rathod ', true);
     setMetaTag('og:description', description, true);
     setMetaTag('og:title', title, true);
     setMetaTag('og:image', metaImage, true);
     setMetaTag('twitter:card', 'summary_large_image');
-    setMetaTag('twitter:site', '@artuncolak');
+    setMetaTag('twitter:site', '@vikasrathod');
     setMetaTag('twitter:title', title);
     setMetaTag('twitter:description', description);
     setMetaTag('twitter:image', metaImage);
