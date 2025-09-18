@@ -50,7 +50,7 @@ export default function Profile() {
             {/* centered soft base glow */}
             <span
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-                     w-40 h-40 rounded-full bg-pink-500/20 blur-2xl mix-blend-screen"
+                     w-40 h-40 rounded-full bg-pink-500/40 blur-2xl mix-blend-screen"
             ></span>
             {/* stronger glow leaning top-right */}
             <span
@@ -58,10 +58,10 @@ export default function Profile() {
                      w-56 h-56 rounded-full bg-purple-600/20 blur-3xl mix-blend-screen"
             ></span>
             {/* widest, faint rim to the far right/top */}
-            <span
+            {/* <span
               className="absolute left-1/2 top-1/2 translate-x-12 -translate-y-40
                      w-72 h-72 rounded-full bg-orange-400/15 blur-[90px] mix-blend-screen"
-            ></span>
+            ></span> */}
           </div>
 
           {/* Image (in front) */}
