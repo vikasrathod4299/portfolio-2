@@ -7,7 +7,7 @@ export default function SpotifyNowPlaying() {
     const [nowPlaying, setNowPlaying] = useState<NowPlaying>();
 
     const getNowPlaying = async () => {
-        const { data } = await axios.get("/api/now-playing");
+        const { data } = await axios.get("/now-playing");
         setNowPlaying(data);
     }
 
