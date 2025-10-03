@@ -16,7 +16,7 @@ export default function Layout({ children }: Props) {
         <main className="mx-auto my-16 w-full max-w-3xl flex-grow px-3">
           {children}
         </main>
-        <Footer />
+      <Footer />
       </GridSmallBackgroundDemo>
     </>
   )
