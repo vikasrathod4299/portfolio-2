@@ -23,6 +23,7 @@ export async function onRequest(context) {
       album: song.item?.album?.name,
       albumImageUrl: song.item?.album?.images?.[0]?.url,
       songUrl: song.item?.external_urls?.spotify,
+      previewUrl: song.item?.preview_url
     }),
     { headers: { "content-type": "application/json" } }
   );
