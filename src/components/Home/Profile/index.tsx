@@ -70,9 +70,9 @@ export default function Profile() {
           />
         </div>
 
-        <h1 className="mt-6 text-4xl font-bold bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent sm:text-5xl">
+        <span className="mt-6 text-4xl sm:text-5xl">
           Hi, I am Vikas.
-        </h1>
+        </span>
 
 
         <ReactTyped
