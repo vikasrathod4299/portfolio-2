@@ -14,6 +14,11 @@ export async function onRequest(context) {
   }
 
   const song = await resp.json();
+  const preview_url = await fetch("https://api.spotify.com/v1/tracks/" + song.item.id, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  const preview_data = await preview_url.json();
+
 
   return new Response(
     JSON.stringify({
@@ -23,7 +28,7 @@ export async function onRequest(context) {
       album: song.item?.album?.name,
       albumImageUrl: song.item?.album?.images?.[0]?.url,
       songUrl: song.item?.external_urls?.spotify,
-      previewUrl: song.item?.preview_url
+      previewUrl: preview_data?.preview_url
     }),
     { headers: { "content-type": "application/json" } }
   );
