@@ -22,13 +22,14 @@ export async function onRequest(context) {
 
   return new Response(
     JSON.stringify({
+      id: song.item?.id,
       isPlaying: song.is_playing,
       name: song.item?.name,
       artist: song.item?.artists?.map((a) => a.name).join(", "),
       album: song.item?.album?.name,
       albumImageUrl: song.item?.album?.images?.[0]?.url,
       songUrl: song.item?.external_urls?.spotify,
-      previewUrl: preview_data?.preview_url
+      previewUrl: preview_data
     }),
     { headers: { "content-type": "application/json" } }
   );
