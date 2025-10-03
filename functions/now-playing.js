@@ -18,7 +18,7 @@ export async function onRequest(context) {
   return new Response(
     JSON.stringify({
       isPlaying: song.is_playing,
-      name: song.item?.name,
+      name: song.item.name,
       artist: song.item?.artists?.map((a) => a.name).join(", "),
       album: song.item?.album?.name,
       albumImageUrl: song.item?.album?.images?.[0]?.url,
