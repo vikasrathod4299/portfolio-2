@@ -8,7 +8,7 @@ export async function onRequest(context) {
   });
 
   if (resp.status === 204 || resp.status > 400) {
-    return new Response(JSON.stringify({ isPlaying: false }), {
+    return new Response(JSON.stringify({ isPlaying: false , resp }), {
       headers: { "content-type": "application/json" },
     });
   }
@@ -18,7 +18,7 @@ export async function onRequest(context) {
   return new Response(
     JSON.stringify({
       isPlaying: song.is_playing,
-      name: song.item.name,
+      name: song.item?.name,
       artist: song.item?.artists?.map((a) => a.name).join(", "),
       album: song.item?.album?.name,
       albumImageUrl: song.item?.album?.images?.[0]?.url,
