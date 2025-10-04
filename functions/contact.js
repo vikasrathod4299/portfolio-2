@@ -6,7 +6,7 @@ export async function onRequest(context) {
     if (!email || !message) {
       return new Response(
         JSON.stringify(
-          { error: 'Email and message are required.' },
+          { error: 'Email and message are required.' , success: false },
           { status: 400, headers: { 'content-type': 'application/json' } },
         ),
       )
@@ -37,7 +37,7 @@ export async function onRequest(context) {
       const errorData = await resp.json()
       console.log('Resend err: ', errorData)
       return new Response(
-        JSON.stringify({ error: 'Failed to send email', details: errorData }),
+        JSON.stringify({ error: 'Failed to send email', details: errorData, success: false }),
         { status: 500, headers: { 'content-type': 'application/json' } },
       )
     }
@@ -49,7 +49,7 @@ export async function onRequest(context) {
 
   } catch (error) {
     console.error('Error in contact function: ', error)
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+    return new Response(JSON.stringify({ error: 'Internal Server Error', success: false }), {
       status: 500,
       headers: { 'content-type': 'application/json' },
     })
