@@ -43,30 +43,29 @@ export default function Profile() {
         height,
       )}
     >
-      <div className="flex flex-col w-full gap-4 sm:gap-5">
+      <div className="relative flex flex-col w-full gap-4 sm:gap-5">
         <div className="h-32 w-32">
           {/* Halo (behind) */}
-          {/* <div className="pointer-events-none absolute inset-0 z-0">
+           <div className="pointer-events-none absolute inset-0 -z-10">
             <span
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-                     w-40 h-40 rounded-full bg-pink-500/40 blur-2xl mix-blend-screen"
+              className="absolute left-1/10 top-1/7 -translate-x-1/2 -translate-y-1/2
+                     w-40 h-40 rounded-full bg-sky-200/20 blur-2xl mix-blend-screen"
             ></span>
-            <span
+            {/* <span
               className="absolute left-1/2 top-1/2 translate-x-6 -translate-y-40
                      w-56 h-56 rounded-full bg-purple-600/20 blur-3xl mix-blend-screen"
             ></span>
             <span
               className="absolute left-1/2 top-1/2 translate-x-12 -translate-y-40
                      w-72 h-72 rounded-full bg-orange-400/15 blur-[90px] mix-blend-screen"
-            ></span>
+            ></span> */}
           </div>  
-          */}
 
           {/* Image (in front) */}
           <img
             src="/media/profile.jpeg"
             alt="Vikas Rathod"
-            className="z-10 rounded-full object-cover"
+            className="rounded-full object-cover"
           />
         </div>
 
