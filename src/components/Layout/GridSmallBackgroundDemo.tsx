@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export default function GridSmallBackgroundDemo({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex w-full items-center justify-center bg-white dark:bg-[#18181b]">
+    <div className="relative  w-full items-center justify-center bg-white dark:bg-[#18181b]">
       <div
         className={cn(
           "absolute inset-0",
@@ -14,7 +14,7 @@ export default function GridSmallBackgroundDemo({ children }: { children: React.
       />
       {/* Radial gradient for the container to give a faded look */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-[#18181b]"></div>
-      <div className="relative z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text py-8">
+      <div className="relative z-20 bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text ">
         {children}
       </div>
     </div>

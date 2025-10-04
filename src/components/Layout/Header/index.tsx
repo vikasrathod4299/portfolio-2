@@ -37,7 +37,7 @@ export default function Header() {
     <>
       <header
         className={classNames(
-          ' bg-white/0 fixed z-50 transition-shadow dark:bg-zinc-900/0',
+          ' bg-white/0 fixed z-50 transition-shadow dark:bg-zinc-900/0 top-0',
           'fixed w-full',
           'h-16',
           { shadow: isScrolled,'bg-white/70 backdrop-blur-md': isScrolled , 'dark:bg-zinc-900/70': isScrolled, fixed: isScrolled },
