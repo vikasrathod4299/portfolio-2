@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 export default function SpotifyNowPlaying() {
     const [nowPlaying, setNowPlaying] = useState<NowPlaying>();
-    console.log(nowPlaying)
 
     const getNowPlaying = async () => {
         const { data } = await axios.get("/now-playing");

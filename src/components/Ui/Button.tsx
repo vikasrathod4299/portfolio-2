@@ -26,7 +26,7 @@ export default function Button({
       {...props}
     >
       <span className="mx-auto flex gap-3 font-semibold">
-        {!loading ? <IconLoader2 className="animate-spin" /> : null} {children}
+        {loading ? <IconLoader2 className="animate-spin" /> : null} {children}
       </span>
     </button>
   );
