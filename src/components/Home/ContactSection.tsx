@@ -6,69 +6,76 @@ import Section from "./Section";
 import { useState } from "react";
 import { toast } from "sonner";
 
-
 export default function ContactSection() {
-    const [contact, setContact] = useState<ContactRequest>({
-        name: '',
-        email: '',
-        message: ''
-    });
+  const [contact, setContact] = useState<ContactRequest>({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-    const sendMail = async () => {
-        const { data } = await axios.post('/contact', contact)
-        if(data.success) {
-            toast.success("Message sent successfully!");
-            setContact({
-                name: '',
-                email: '',
-                message: ''
-            });
-        } else {
-            toast.error("Something went wrong, please try again later.");
-        }
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { data } = await axios.post("/contact", contact);
+
+      if (data.success) {
+        toast.success("Message sent successfully! 🎉");
+        setContact({ name: "", email: "", message: "" }); // reset form
+      } else {
+        toast.error("Something went wrong, please try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    const [loading, setLoading] = useState<boolean>(false);
+  return (
+    <Section label="Contact">
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-5 sm:flex-row">
+          <Input
+            type="email"
+            placeholder="Your email"
+            className="flex-1"
+            required
+            value={contact.email}
+            onChange={(e) =>
+              setContact((prev) => ({ ...prev, email: e.target.value }))
+            }
+          />
+          <Input
+            type="text"
+            placeholder="Your name"
+            className="flex-1"
+            required
+            value={contact.name}
+            onChange={(e) =>
+              setContact((prev) => ({ ...prev, name: e.target.value }))
+            }
+          />
+        </div>
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        setLoading(true);
-        e.preventDefault();
-        await sendMail();
-        setLoading(false);
-    }
+        <Textarea
+          rows={10}
+          placeholder="Your message"
+          required
+          value={contact.message}
+          onChange={(e) =>
+            setContact((prev) => ({ ...prev, message: e.target.value }))
+          }
+        />
 
-    return (
-        <Section label="Contact">
-            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-                <div className="flex flex-col gap-5 sm:flex-row">
-                    <Input 
-                        type="email"
-                        placeholder="Your email"
-                        className="flex-1"
-                        required
-                        value={contact.email}
-                        onChange={(e) => setContact({...contact, email: e.target.value})}
-                    />
-                    <Input
-                        type="text"
-                        placeholder="Your name"
-                        className="flex-1"
-                        required
-                        value={contact.name}
-                        onChange={(e) => setContact({...contact, name: e.target.value})}
-                    />
-                </div>
-                <Textarea
-                    rows={10}
-                    placeholder="Your message"
-                    required
-                    value={contact.message}
-                    onChange={(e) => setContact({...contact, message: e.target.value})}
-                />
-                <Button loading disabled={loading}>Send</Button>
-            </form>
-        </Section>
-
-    )
-
+        <Button loading={loading} disabled={loading}>
+          {loading ? "Sending..." : "Send"}
+        </Button>
+      </form>
+    </Section>
+  );
 }
