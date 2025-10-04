@@ -23,11 +23,11 @@ export default function ContactSection() {
     try {
       const { data } = await axios.post("/contact", contact);
 
-      if (data.success) {
+      if (!data.success) {
+        toast.error("Something went wrong, please try again later.");
+      } else {
         toast.success("Message sent successfully! 🎉");
         setContact({ name: "", email: "", message: "" }); // reset form
-      } else {
-        toast.error("Something went wrong, please try again later.");
       }
     } catch (error) {
       console.error(error);
