@@ -48,8 +48,8 @@ export default function Profile() {
           {/* Halo (behind) */}
            <div className="pointer-events-none absolute inset-0 -z-10">
             <span
-              className="absolute left-1/10 top-1/7 -translate-x-1/2 -translate-y-1/2
-                     w-40 h-40 rounded-full bg-sky-200/20 blur-2xl mix-blend-screen"
+              className="absolute left-1/6 top-1/7 -translate-x-1/2 -translate-y-1/2
+                     w-40 h-40 rounded-full bg-sky-200/20 blur-2xl mix-blend-screen sm:left-1/11"
             ></span>
             {/* <span
               className="absolute left-1/2 top-1/2 translate-x-6 -translate-y-40
