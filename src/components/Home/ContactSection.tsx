@@ -73,7 +73,7 @@ export default function ContactSection() {
         />
 
         <Button loading={loading} disabled={loading}>
-          {loading ? "Sending..." : "Send"}
+          {loading ? "" : "Send"}
         </Button>
       </form>
     </Section>
