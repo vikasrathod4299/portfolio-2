@@ -3,7 +3,7 @@ import { IconSun, IconMoon} from '@tabler/icons-react'
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>(
-    (localStorage.getItem('theme') as 'light' | 'dark') || 'dark'
+    (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
   )
 
   useEffect(() => {

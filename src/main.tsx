@@ -17,6 +17,7 @@ import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 
 import App from './App.tsx'
+import { BlogRoute } from './routes/BlogRoute.tsx'
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -36,7 +37,9 @@ const indexRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   TanStackQueryDemo(rootRoute),
+  BlogRoute(rootRoute),
 ])
+
 
 const TanStackQueryProviderContext = TanStackQueryProvider.getContext()
 

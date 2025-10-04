@@ -31,7 +31,7 @@ export default function ContactSection() {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to send message. Please try again later.");
+        toast.error("Something went wrong, please try again later.",{position: 'top-right'});
     } finally {
       setLoading(false);
     }
