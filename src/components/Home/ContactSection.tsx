@@ -1,8 +1,10 @@
+import axios from "axios";
 import Button from "../Ui/Button";
 import Input from "../Ui/Input";
 import Textarea from "../Ui/TextArea";
 import Section from "./Section";
 import { useState } from "react";
+import { toast } from "sonner";
 
 
 export default function ContactSection() {
@@ -11,13 +13,27 @@ export default function ContactSection() {
         email: '',
         message: ''
     });
+
+    const sendMail = async () => {
+        const { data } = await axios.post('/contact', contact)
+        if(data.success) {
+            toast.success("Message sent successfully!");
+            setContact({
+                name: '',
+                email: '',
+                message: ''
+            });
+        } else {
+            toast.error("Something went wrong, please try again later.");
+        }
+    }
+
     const [loading, setLoading] = useState<boolean>(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         setLoading(true);
         e.preventDefault();
-
-
+        await sendMail();
         setLoading(false);
     }
 
