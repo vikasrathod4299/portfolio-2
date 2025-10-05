@@ -19,10 +19,15 @@ interface ContactRequest {
 }
 
 interface Post {
-  title: string;
-  slug: string;
-  description?: string;
-  date: Date;
-  preview?: string;
-  body?: string;
+      id: string;
+      title: string;
+      slug: string;
+      date: string;
+      tags: string[];
+      description: string;
+      cover: string | null;
+      published: boolean;
+      author: string;
+      readingTime: number | null;
+      url: string;
 }

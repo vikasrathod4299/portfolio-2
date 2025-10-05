@@ -73,9 +73,12 @@ export async function onRequest(context) {
     const post = {
       id: pageId,
       title: props.Name?.title?.[0]?.plain_text || "",
+      description: props.Description?.rich_text?.[0]?.plain_text || '',
       slug: props.Slug?.rich_text?.[0]?.plain_text || "",
       date: props["Published Date"]?.date?.start || "",
-      tags: props.tags?.multi_select?.map(t => t.name) || [],
+      tags: props.Tags?.multi_select?.map(t => t.name) || [],
+      author: props.Author?.rich_text?.[0]?.plain_text || 'Vikas Rathod',
+      readingTime: props['Reading Time']?.number || null,
       cover:
         props.cover?.files?.[0]?.file?.url ||
         props.cover?.files?.[0]?.external?.url ||
