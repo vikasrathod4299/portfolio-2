@@ -2,6 +2,7 @@ import PostCard from "@/components/Blogs/PostCard";
 import Layout from "@/components/Layout"
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 
@@ -10,8 +11,8 @@ export default function BlogPage() {
     const [posts, setPosts] = useState<Array<Post>>([]);
 
     const getPosts = async () => {
-        const response = await fetch('/blogs');
-        const { posts } = await response.json();
+        const response = await axios.get('/blogs');
+        const { posts } = response.data;
         setPosts(posts);
     };
 

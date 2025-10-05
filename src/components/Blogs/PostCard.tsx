@@ -8,7 +8,10 @@ interface Props {
 export default function PostCard({ post }: Props) {
   const { title, description, slug, date, cover } = post;
   return (
-    <Link to="/blog" params={{ slug }}>
+    <Link
+      to="/blog"
+      params={{ slug }}
+    >
       <Card className="flex w-full">
         {cover && (
           <img
