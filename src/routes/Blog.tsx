@@ -11,9 +11,8 @@ export default function BlogPage() {
 
     const getPosts = async () => {
         const response = await fetch('/blogs');
-        const data = await response.json();
-        console.log(data)
-        setPosts(data);
+        const { posts } = await response.json();
+        setPosts(posts);
     };
 
     useEffect(() => {
