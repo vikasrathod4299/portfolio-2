@@ -25,7 +25,6 @@ export async function onRequest(context) {
       body: JSON.stringify({
         filter: {
           property: "Published",
-          checkbox: { equals: true },
         },
         sorts: [
           { property: "Published", direction: "descending" },
