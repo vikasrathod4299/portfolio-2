@@ -17,7 +17,7 @@ export async function onRequest(context) {
 
   try {
     // 1. Query database to find page with matching slug
-    const queryUrl = `https://api.notion.com/v1/databases/${VITE_NOTION_DATA_SOURCE_ID}/query`;
+    const queryUrl = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`;
     const queryRes = await fetch(queryUrl, {
       method: "POST",
       headers: {
