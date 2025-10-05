@@ -10,7 +10,6 @@ export async function onRequest(context) {
       ),
     )
   }
-
   const NOTION_API_URL = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`;
 
   try {
