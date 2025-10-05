@@ -1,8 +1,8 @@
 export async function onRequest(context) {
 
-  const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCES_ID } = context.env;
+  const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env;
 
-    if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCES_ID) {
+    if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
     return new Response(        
         JSON.stringify(
         { error: 'Notion configuration is missing.', success: false },
@@ -11,7 +11,7 @@ export async function onRequest(context) {
     )
   }
 
-  const NOTION_API_URL = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCES_ID}/query`;
+  const NOTION_API_URL = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`;
 
   try {
     // Fetch blog posts from Notion
