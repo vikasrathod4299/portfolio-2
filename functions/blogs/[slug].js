@@ -1,36 +1,35 @@
 export async function onRequest(context) {
-  const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCES_ID } = context.env;
+  const { NOTION_TOKEN, NOTION_DATABASE_ID } = context.env;
   const slug = context.params.slug;
 
-  if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCES_ID) {
-    return new Response(
-      JSON.stringify({ success: false, error: "Missing Notion configuration" }),
-      { status: 500 }
-    );
+  if (!NOTION_TOKEN || !NOTION_DATABASE_ID) {
+    return new Response(JSON.stringify({
+      success: false,
+      error: "Notion configuration missing"
+    }), { status: 500, headers: { "Content-Type": "application/json" } });
   }
-
   if (!slug) {
-    return new Response(
-      JSON.stringify({ success: false, error: "Missing slug" }),
-      { status: 400 }
-    );
+    return new Response(JSON.stringify({
+      success: false,
+      error: "Slug not provided"
+    }), { status: 400, headers: { "Content-Type": "application/json" } });
   }
 
   try {
-    // 1️⃣ Query database to find page with matching slug
-    const queryUrl = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCES_ID}/query`;
+    // 1. Query database to find page with matching slug
+    const queryUrl = `https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}/query`;
     const queryRes = await fetch(queryUrl, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${VITE_NOTION_TOKEN}`,
+        "Authorization": `Bearer ${NOTION_TOKEN}`,
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         filter: {
           property: "Slug",
-          rich_text: { equals: slug },
-        },
+          rich_text: { equals: slug }
+        }
       }),
     });
 
@@ -39,24 +38,26 @@ export async function onRequest(context) {
       throw new Error(`Notion query error: ${errText}`);
     }
 
-    const queryData = await queryRes.json();
-    if (!queryData.results.length) {
-      return new Response(
-        JSON.stringify({ success: false, error: "Post not found" }),
-        { status: 404 }
-      );
+    const queryJson = await queryRes.json();
+    const results = queryJson.results;
+    if (!results || results.length === 0) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: "Post not found"
+      }), { status: 404, headers: { "Content-Type": "application/json" } });
     }
 
-    const page = queryData.results[0];
+    const page = results[0];
     const pageId = page.id;
 
-    // 2️⃣ Fetch full content blocks for the page
+    // 2. Fetch block children (content) of the page
     const blocksUrl = `https://api.notion.com/v1/blocks/${pageId}/children?page_size=100`;
     const blocksRes = await fetch(blocksUrl, {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${VITE_NOTION_TOKEN}`,
+        "Authorization": `Bearer ${NOTION_TOKEN}`,
         "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json"
       },
     });
 
@@ -65,32 +66,39 @@ export async function onRequest(context) {
       throw new Error(`Notion blocks error: ${errText}`);
     }
 
-    const blocksData = await blocksRes.json();
+    const blocksJson = await blocksRes.json();
 
-    // 3️⃣ Prepare response
+    // 3. Compose the response object
     const props = page.properties;
     const post = {
       id: pageId,
       title: props.Name?.title?.[0]?.plain_text || "",
       slug: props.Slug?.rich_text?.[0]?.plain_text || "",
       date: props["Published Date"]?.date?.start || "",
-      tags: props.tags?.multi_select?.map((t) => t.name) || [],
+      tags: props.tags?.multi_select?.map(t => t.name) || [],
       cover:
         props.cover?.files?.[0]?.file?.url ||
         props.cover?.files?.[0]?.external?.url ||
         null,
-      content: blocksData.results, // full Notion blocks
+      content: blocksJson.results
     };
 
-    return new Response(
-      JSON.stringify({ success: true, post }),
-      { headers: { "Content-Type": "application/json" }, status: 200 }
-    );
+    return new Response(JSON.stringify({
+      success: true,
+      post
+    }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
+
   } catch (err) {
-    console.error("Error fetching post by slug:", err);
-    return new Response(
-      JSON.stringify({ success: false, error: err.message }),
-      { headers: { "Content-Type": "application/json" }, status: 500 }
-    );
+    console.error("Error in slug endpoint:", err);
+    return new Response(JSON.stringify({
+      success: false,
+      error: err.message
+    }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 }
