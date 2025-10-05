@@ -23,10 +23,10 @@ export async function onRequest(context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // filter: {
-        //   property: "Published",
-        //   checkbox: { equals: true },
-        // },
+        filter: {
+          property: "Published",
+          checkbox: { equals: true },
+        },
         sorts: [
           { property: "Published", direction: "descending" },
         ],
