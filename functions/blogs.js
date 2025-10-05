@@ -19,14 +19,14 @@ export async function onRequest(context) {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${VITE_NOTION_TOKEN}`,
-        "Notion-Version": "2022-06-28",
+        "Notion-Version": "2025-09-03",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        filter: {
-          property: "Published",
-          checkbox: { equals: true },
-        },
+        // filter: {
+        //   property: "Published",
+        //   checkbox: { equals: true },
+        // },
         sorts: [
           { property: "Date", direction: "descending" },
         ],
