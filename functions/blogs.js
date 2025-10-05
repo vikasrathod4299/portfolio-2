@@ -23,9 +23,6 @@ export async function onRequest(context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        filter: {
-          property: "Published",
-        },
         sorts: [
           { property: "Published", direction: "descending" },
         ],
