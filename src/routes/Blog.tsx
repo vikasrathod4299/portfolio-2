@@ -26,7 +26,7 @@ export default function BlogPage() {
   return (
     <Layout>
       <Page title="Vikas Rathod | Blog" description="Read my latest blog posts on web development, programming, and technology.">
-        <div className="mt-16">
+        <div className="mt-16 h-screen">
         <div className="flex flex-col gap-5">
           <h1 className="text-4xl sm:text-5xl">Blog</h1>
           <span className="text-lg sm:text-xl">
@@ -42,7 +42,7 @@ export default function BlogPage() {
 
         <div className="mt-5 flex flex-col justify-center gap-5">
           {
-            posts.length > 0 ? posts.map((post) => (
+            posts?.length > 0 ? posts.map((post) => (
               <PostCard key={post.id} post={post} />
             )) : (
               <h1 className="text-center">No posts available.</h1>

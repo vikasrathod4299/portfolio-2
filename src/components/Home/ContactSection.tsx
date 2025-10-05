@@ -14,7 +14,6 @@ export default function ContactSection() {
   });
 
   const [loading, setLoading] = useState(false);
-  console.log(loading)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
