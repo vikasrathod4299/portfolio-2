@@ -1,8 +1,8 @@
 export async function onRequest(context) {
-  const { NOTION_TOKEN, NOTION_DATABASE_ID } = context.env;
+  const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env;
   const slug = context.params.slug;
 
-  if (!NOTION_TOKEN || !NOTION_DATABASE_ID) {
+  if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
     return new Response(JSON.stringify({
       success: false,
       error: "Notion configuration missing"
@@ -17,11 +17,11 @@ export async function onRequest(context) {
 
   try {
     // 1. Query database to find page with matching slug
-    const queryUrl = `https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}/query`;
+    const queryUrl = `https://api.notion.com/v1/databases/${VITE_NOTION_DATA_SOURCE_ID}/query`;
     const queryRes = await fetch(queryUrl, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${NOTION_TOKEN}`,
+        "Authorization": `Bearer ${VITE_NOTION_TOKEN}`,
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json",
       },
@@ -55,7 +55,7 @@ export async function onRequest(context) {
     const blocksRes = await fetch(blocksUrl, {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${NOTION_TOKEN}`,
+        "Authorization": `Bearer ${VITE_NOTION_TOKEN}`,
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json"
       },
