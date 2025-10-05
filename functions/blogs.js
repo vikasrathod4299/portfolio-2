@@ -28,7 +28,7 @@ export async function onRequest(context) {
         //   checkbox: { equals: true },
         // },
         sorts: [
-          { property: "Date", direction: "descending" },
+          { property: "Published", direction: "descending" },
         ],
       }),
     });
