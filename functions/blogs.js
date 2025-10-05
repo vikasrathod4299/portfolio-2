@@ -50,6 +50,7 @@ export async function onRequest(context) {
           props.Cover?.files?.[0]?.file?.url ||
           props.Cover?.files?.[0]?.external?.url ||
           null,
+        url: page.url
       };
     });
 
