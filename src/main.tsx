@@ -40,12 +40,13 @@ const BlogRoute = createRoute({
   path: '/blog',
   component: BlogPage,
 })
-export const BlogPostRoute = createRoute({
+const BlogPostRoute = createRoute({
   getParentRoute: () => BlogRoute,
   path: '$slug',
   component: BlogPost,
 })
 BlogRoute.addChildren([BlogPostRoute])
+
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
