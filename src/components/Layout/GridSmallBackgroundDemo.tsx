@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export default function GridSmallBackgroundDemo({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full items-center justify-center bg-white dark:bg-[#18181b]">
+    <div className="relative mt-16 w-full items-center justify-center bg-white dark:bg-[#18181b]">
       <div
         className={cn(
           "absolute inset-0",
