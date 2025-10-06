@@ -30,7 +30,7 @@ export function BlogPost() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   })
 
-  const { title, description, cover, date, tags, readingTime, content } =
+  const { id, title, description, cover, date, tags, readingTime, content } =
     postData || {}
 
   return (
@@ -106,7 +106,7 @@ export function BlogPost() {
       </div>
 
       {content ? (
-            <Article content={content} />
+            <Article pageId={id ? id : ''} />
       ) : null}
     </Page>
   )

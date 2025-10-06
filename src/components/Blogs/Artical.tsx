@@ -1,14 +1,29 @@
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from  'remark-gfm'
+import { NotionAPI } from 'notion-client'
+import { useEffect, useState } from 'react';
+import { NotionRenderer } from 'react-notion-x'
+import 'react-notion-x/src/styles.css'
+
 interface ArticleProps {
-    content: string;
+    pageId: string;
 }
 
-export default function Article({ content }: ArticleProps) {
+export default function Article({ pageId }: ArticleProps) {
+    const [recordMap, setRecordMap] = useState<any>(null)
+
+    useEffect(() => {
+        async function fetchPage() {
+      if (!pageId) return;
+      const notion = new NotionAPI()
+      const data = await notion.getPage(pageId)
+      setRecordMap(data)
+    }
+    fetchPage()
+
+    }, [pageId])
 
   return (
     <article className='prose prose-zinc dark:prose-invert max-w-none'>
-        {content ? <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown> : <p>No content available</p>}
+        {recordMap ? <NotionRenderer recordMap={recordMap} /> : <p>Loading...</p>}
     </article>
   )
 }
