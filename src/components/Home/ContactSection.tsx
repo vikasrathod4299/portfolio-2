@@ -38,7 +38,7 @@ export default function ContactSection() {
 
   return (
     <Section label="Contact">
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-5 animate-fade-in" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5 sm:flex-row">
           <Input
             type="email"

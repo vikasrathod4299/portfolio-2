@@ -43,7 +43,7 @@ export default function Profile() {
         height,
       )}
     >
-      <div className="relative flex flex-col w-full gap-4 sm:gap-5">
+      <div className="relative flex flex-col w-full gap-4 sm:gap-5 animate-fade-in">
         <div className="h-32 w-32">
           {/* Halo (behind) */}
            <div className="pointer-events-none absolute inset-0 -z-10">
@@ -69,17 +69,17 @@ export default function Profile() {
           />
         </div>
 
-        <span className="mt-6 text-4xl sm:text-5xl">
+        <span className="mt-6 text-4xl sm:text-5xl ">
           Hi, I am Vikas.
         </span>
 
-
+        {/* do not animate this section only  */}
         <ReactTyped
           strings={['I build software.']}
           typeSpeed={60}
           backSpeed={40}
           showCursor={true}
-          className="text-2xl sm:text-4xl"
+          className="text-2xl sm:text-4xl" // do not animate-fade-in this section
         />
         <span className="sm:text-lg">
           I&apos;m a software engineer with experience in delivering clean,

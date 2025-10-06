@@ -11,7 +11,7 @@ export default function ExperienceSection() {
 
   return (
     <Section label="Where I’ve Worked">
-      <div className="flex min-h-fit flex-col gap-5 sm:flex-row sm:gap-20">
+      <div className="flex min-h-fit flex-col gap-5 sm:flex-row sm:gap-20 animate-fade-in">
         <div className="hidden min-w-fit flex-col sm:flex">
           {experiences.map(({ company }, index) => (
             <ExperienceTab
