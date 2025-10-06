@@ -73,13 +73,12 @@ export default function Profile() {
           Hi, I am Vikas.
         </span>
 
-        {/* do not animate this section only  */}
         <ReactTyped
           strings={['I build software.']}
           typeSpeed={60}
           backSpeed={40}
           showCursor={true}
-          className="text-2xl sm:text-4xl" // do not animate-fade-in this section
+          className="text-2xl sm:text-4xl" 
         />
         <span className="sm:text-lg">
           I&apos;m a software engineer with experience in delivering clean,
