@@ -80,8 +80,8 @@ export async function onRequest(context) {
       author: props.Author?.rich_text?.[0]?.plain_text || 'Vikas Rathod',
       readingTime: props['Reading Time']?.number || null,
       cover:
-        props.cover?.files?.[0]?.file?.url ||
-        props.cover?.files?.[0]?.external?.url ||
+        props.Cover?.files?.[0]?.file?.url ||
+        props.Cover?.files?.[0]?.external?.url ||
         null,
       content: blocksJson.results
     };
