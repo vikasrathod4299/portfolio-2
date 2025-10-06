@@ -30,5 +30,5 @@ interface Post {
       author: string;
       readingTime: number | null;
       url?: string;
-      content?: Record<string, any>;
+      content?: Array<Record<string, any>>;
 }

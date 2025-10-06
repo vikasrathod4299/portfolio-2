@@ -1,3 +1,4 @@
+import Article from '@/components/Blogs/Artical'
 import Page from '@/components/Page'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from '@tanstack/react-router'
@@ -63,6 +64,7 @@ export function BlogPost() {
                 cursor-default 
                 animate-fade-in
             "
+            //style={{ animationDelay: `${Math.random() * 0.5}s` }}
             >
               #{tag}
             </span>
@@ -104,10 +106,7 @@ export function BlogPost() {
       </div>
 
       {content ? (
-        <div className="prose prose-zinc dark:prose-invert max-w-none">
-          {/* Render the content here */}
-          <h1>Content here</h1>
-        </div>
+            <Article content={content} />
       ) : null}
     </Page>
   )
