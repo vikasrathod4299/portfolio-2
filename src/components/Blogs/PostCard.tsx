@@ -9,6 +9,7 @@ export default function PostCard({ post }: Props) {
   const { title, description, slug, date, cover } = post;
   return (
     <Link
+      key={slug}
       to="/blog"
       params={{ slug }}
     >

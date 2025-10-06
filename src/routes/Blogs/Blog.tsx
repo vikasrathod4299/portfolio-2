@@ -48,13 +48,9 @@ export default function BlogPage() {
               <h1 className="text-center">No posts available.</h1>
             )
           }
-
         </div>
-
-
         </div>
       </Page>
-
     </Layout>
   );
 }

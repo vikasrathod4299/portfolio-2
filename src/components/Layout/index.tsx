@@ -12,12 +12,12 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
       <GridSmallBackgroundDemo>
-      <Header />
-        <main className="mx-auto my-16 w-full max-w-3xl flex-grow px-3">
-          {children}
-        </main>
-        <Toaster />
-      <Footer />
+        <Header />
+          <main className="mx-auto my-16 w-full max-w-3xl flex-grow px-3">
+            {children}
+          </main>
+          <Toaster />
+        <Footer />
       </GridSmallBackgroundDemo>
   )
 }
