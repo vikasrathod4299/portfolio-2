@@ -22,6 +22,7 @@ export default function Navlink({href, label, onClick}: Props) {
                     'hover:bg-zinc-200/20 dark:hover:bg-zinc-200/10': !active
                 })
             }
+            preload="intent"
             onClick={onClick}
         >
             {label}
