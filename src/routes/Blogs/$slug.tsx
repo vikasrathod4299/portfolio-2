@@ -43,7 +43,7 @@ export function BlogPost() {
         <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">{title}</h1>
 
         <div className="mb-8 flex flex-wrap gap-1.5 text-xs text-gray-700">
-          {tags?.map((tag, i) => (
+          {tags?.map((tag) => (
             <span
               key={tag}
               className="
