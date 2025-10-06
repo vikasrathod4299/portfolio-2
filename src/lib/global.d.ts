@@ -25,9 +25,10 @@ interface Post {
       date: string;
       tags: string[];
       description: string;
-      cover: string | null;
+      cover?: string;
       published: boolean;
       author: string;
       readingTime: number | null;
-      url: string;
+      url?: string;
+      content?: Record<string, any>;
 }

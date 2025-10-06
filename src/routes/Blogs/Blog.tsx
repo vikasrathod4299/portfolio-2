@@ -3,7 +3,6 @@ import Layout from "@/components/Layout"
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
 import { Outlet, useLocation, useMatch } from "@tanstack/react-router";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const DummyPosts: Array<Post> = [
@@ -42,9 +41,9 @@ export default function BlogPage() {
     const isPostRoute = useLocation().pathname !== '/blog';
 
     const getPosts = async () => {
-        const response = await axios.get('/blogs');
-        const { posts } = response.data;
-        //const posts = DummyPosts;
+        // const response = await axios.get('/blogs');
+        // const { posts } = response.data;
+        const posts = DummyPosts;
         setPosts(posts);
     };
 
