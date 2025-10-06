@@ -17,7 +17,7 @@ export function BlogPost() {
         }
     })
 
-    const {author, title, description, cover, date, tags, readingTime, content} = postData  || {};
+    const { title, description, cover, date, tags, readingTime, content} = postData  || {};
 
 
   return (

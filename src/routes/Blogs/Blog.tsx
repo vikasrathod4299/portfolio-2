@@ -2,7 +2,7 @@ import PostCard from "@/components/Blogs/PostCard";
 import Layout from "@/components/Layout"
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
-import { Outlet, useLocation, useMatch } from "@tanstack/react-router";
+import { Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 const DummyPosts: Array<Post> = [
