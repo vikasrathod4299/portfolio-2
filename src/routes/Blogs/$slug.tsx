@@ -26,6 +26,7 @@ export function BlogPost() {
       const result = await axios.get(`/blogs/${slug}`)
       return result.data.post
     },
+    staleTime: 1000 * 60 * 5, // 5 minutes
   })
 
   const { title, description, cover, date, tags, readingTime, content } =
@@ -47,21 +48,21 @@ export function BlogPost() {
             <span
               key={tag}
               className="
-            inline-block 
-            rounded-full 
-            px-3 py-1 
-            bg-white/10 
-            backdrop-blur-md 
-            border border-white/20 
-            text-gray-100 
-            shadow-[0_2px_10px_rgba(255,255,255,0.05)] 
-            hover:bg-white/20 
-            hover:border-white/30 
-            transition-all 
-            duration-300 
-            cursor-default 
-            animate-fade-in
-      "
+                inline-block 
+                rounded-full 
+                px-3 py-1 
+                bg-white/10 
+                backdrop-blur-md 
+                border border-white/20 
+                text-gray-100 
+                shadow-[0_2px_10px_rgba(255,255,255,0.05)] 
+                hover:bg-white/20 
+                hover:border-white/30 
+                transition-all 
+                duration-300 
+                cursor-default 
+                animate-fade-in
+            "
             >
               #{tag}
             </span>
