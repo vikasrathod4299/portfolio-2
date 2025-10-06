@@ -3,37 +3,38 @@ import Layout from "@/components/Layout"
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
 import { Outlet, useLocation } from "@tanstack/react-router";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
-const DummyPosts: Array<Post> = [
-    {
-        id: "1123",
-        title: "First Post",
-        description: "This is the first post",
-        slug: "first-post",
-        date: "2023-01-01",
-        cover: "https://via.placeholder.com/150",
-        tags: ["react", "javascript"],
-        published: true,
-        author: "string",
-        readingTime: 5,
-        url: "string"
-    },
-    {
-        id: "123",
-        title: "Second Post",
-        description: "This is the second post",
-        slug: "second-post",
-        date: "2023-01-02",
-        cover: "https://via.placeholder.com/150",
-        tags: ["react", "javascript"],
-        published: true,
-        author: "string",
-        readingTime:5,
-        url: "string",
+// const DummyPosts: Array<Post> = [
+//     {
+//         id: "1123",
+//         title: "First Post",
+//         description: "This is the first post",
+//         slug: "first-post",
+//         date: "2023-01-01",
+//         cover: "https://via.placeholder.com/150",
+//         tags: ["react", "javascript"],
+//         published: true,
+//         author: "string",
+//         readingTime: 5,
+//         url: "string"
+//     },
+//     {
+//         id: "123",
+//         title: "Second Post",
+//         description: "This is the second post",
+//         slug: "second-post",
+//         date: "2023-01-02",
+//         cover: "https://via.placeholder.com/150",
+//         tags: ["react", "javascript"],
+//         published: true,
+//         author: "string",
+//         readingTime:5,
+//         url: "string",
 
-    }
-];
+//     }
+// ];
 
 export default function BlogPage() {
     const [posts, setPosts] = useState<Array<Post>>([]);
@@ -41,9 +42,9 @@ export default function BlogPage() {
     const isPostRoute = useLocation().pathname !== '/blog';
 
     const getPosts = async () => {
-        // const response = await axios.get('/blogs');
-        // const { posts } = response.data;
-        const posts = DummyPosts;
+        const response = await axios.get('/blogs');
+        const { posts } = response.data;
+        //const posts = DummyPosts;
         setPosts(posts);
     };
 
