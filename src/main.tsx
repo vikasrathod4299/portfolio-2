@@ -40,7 +40,7 @@ const BlogRoute = createRoute({
   path: '/blog',
   component: BlogPage,
 })
-const BlogPostRoute = createRoute({
+export const BlogPostRoute = createRoute({
   getParentRoute: () => BlogRoute,
   path: '$slug',
   component: BlogPost,

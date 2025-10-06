@@ -1,5 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import Card from '../Ui/Card';
+import { BlogPostRoute } from '@/main';
+
 
 interface Props {
   post: Post;
@@ -10,8 +12,9 @@ export default function PostCard({ post }: Props) {
   return (
     <Link
       key={slug}
-      to="/blog"
+      to={`/blog/${slug}`}
       params={{ slug }}
+      preload="intent"
     >
       <Card className="flex w-full">
         {cover && (
