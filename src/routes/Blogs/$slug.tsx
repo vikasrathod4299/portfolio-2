@@ -30,7 +30,7 @@ export function BlogPost() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   })
 
-  const { htmlContent, title, description, cover, date, tags, readingTime, content } =
+  const { htmlContent, title, description, cover, date, tags, readingTime } =
     postData || {}
 
   return (
