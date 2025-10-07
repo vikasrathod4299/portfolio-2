@@ -2,6 +2,7 @@ import PostCard from "@/components/Blogs/PostCard";
 import Layout from "@/components/Layout"
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
+import { useQuery } from "@tanstack/react-query";
 import { Outlet, useLocation } from "@tanstack/react-router";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -35,24 +36,21 @@ import { useEffect, useState } from "react";
 
  //    }
  //];
+const getPosts = async (): Promise<Array<Post>> => {
+        const result = await axios.get('/blogs');
+        return result.data
+    };
 
 export default function BlogPage() {
-    const [posts, setPosts] = useState<Array<Post>>([]);
 
     const isPostRoute = useLocation().pathname !== '/blog';
 
-    const getPosts = async () => {
-        const response = await axios.get('/blogs');
-        const { posts } = response.data;
-        //const posts = DummyPosts;
-        setPosts(posts);
-    };
+    const {data: posts } = useQuery({
+        queryKey: ['blogPosts'],
+        queryFn: getPosts,
+        staleTime: 1000 * 60 * 5, // 5 minutes
+    });
 
-    useEffect(() => {
-        (async () => {
-            await getPosts();
-        })();
-    }, []);
 
 
   return (
@@ -74,7 +72,7 @@ export default function BlogPage() {
 
         <div className="mt-5 flex flex-col justify-center gap-5">
           {
-            posts?.length > 0 ? posts.map((post) => (
+            posts && posts.length > 0 ? posts.map((post) => (
               <PostCard key={post.id} post={post} />
             )) : (
               <h1 className="text-center">No posts available.</h1>
