@@ -16,7 +16,7 @@ export default function Article({ pageId }: ArticleProps) {
       try {
         if (!pageId) return;
         const notion = new NotionAPI()
-        const data = await notion.getPage(`Hello-world${pageId.replace('-', '')}`)
+        const data = await notion.getPage(`Hello-world-${pageId.replace('-', '')}`)
         setRecordMap(data)
       } catch (error) {
         console.error('Error fetching Notion page:', error)
