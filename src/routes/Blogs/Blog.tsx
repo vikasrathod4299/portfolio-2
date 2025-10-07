@@ -29,6 +29,7 @@ export default function BlogPage() {
       <div className="h-4 w-5/6 rounded bg-gray-700/40"></div>
     </div>
   );
+  console.log(posts)
 
   if (isLoading) {
     return (
