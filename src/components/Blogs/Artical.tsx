@@ -19,7 +19,7 @@ export default function Article({ pageId }: ArticleProps) {
         pageId = `Hello-world-${pageId.replace(/-/g, '')}`
         toast.info(pageId)
 
-        const data = await notion.getPage(pageId)
+        const data = await notion.getPage('Hello-world-28242431d1e88019a7cbd3579d73cadc')
         setRecordMap(data)
       } catch (error) {
         console.error('Error fetching Notion page:', error)
