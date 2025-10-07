@@ -39,7 +39,7 @@ const NotionRenderer = ({ blocks }: NotionRendererProps) => {
   });
 
   return (
-    <div className="max-w-3xl mx-auto p-6 font-sans text-white">
+    <div className="max-w-3xl p-6 font-sans text-white">
       {groupedBlocks.map((item, index) => {
         if (item.type === 'bulleted') {
           return (
