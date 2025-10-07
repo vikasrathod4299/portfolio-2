@@ -8,7 +8,7 @@ import axios from "axios";
 
 const getPosts = async (): Promise<Array<Post>> => {
   const result = await axios.get("/blogs");
-  return result.data;
+  return result?.data?.posts || []; 
 };
 
 export default function BlogPage() {
@@ -29,7 +29,6 @@ export default function BlogPage() {
       <div className="h-4 w-5/6 rounded bg-gray-700/40"></div>
     </div>
   );
-  console.log(posts)
 
   if (isLoading) {
     return (
