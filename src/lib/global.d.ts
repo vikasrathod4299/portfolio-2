@@ -31,5 +31,4 @@ interface Post {
       readingTime: number | null;
       url?: string;
       content?: Array<{ type: string; [key: string]: any }>;
-      recordMap?: { type: string; [key: string]: any };
 }

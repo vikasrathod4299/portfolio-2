@@ -1,4 +1,3 @@
-import {NotionAPI} from 'notion-client'
 
 export async function onRequest(context) {
   const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
@@ -61,10 +60,6 @@ export async function onRequest(context) {
     const page = results[0]
     const pageId = page.id
 
-    const notion = new NotionAPI({ authToken: VITE_NOTION_TOKEN })
-    const recordMap = await notion.getPage(pageId)
-
-
 
     // 2. Fetch block children (content) of the page
     const blocksUrl = `https://api.notion.com/v1/blocks/${pageId}/children?page_size=100`
@@ -100,7 +95,6 @@ export async function onRequest(context) {
         props.Cover?.files?.[0]?.external?.url ||
         null,
       content: blocksJson.results || [],
-      recordMap, // Include the full recordMap for react-notion-x
     }
 
     return new Response(

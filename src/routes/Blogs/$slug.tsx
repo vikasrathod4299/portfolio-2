@@ -51,7 +51,7 @@ export function BlogPost() {
     )
   }
 
-  const { title, description, cover, date, tags, readingTime, recordMap } =
+  const { title, description, cover, date, tags, readingTime, content } =
     postData || {}
 
   return (
@@ -124,7 +124,7 @@ export function BlogPost() {
         ) : null}
       </div>
 
-      {recordMap ? <Article recordMap={recordMap} /> : null}
+      {content ? <Article content={content} /> : null}
     </Page>
   )
 }

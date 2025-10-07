@@ -39,13 +39,14 @@ export default function BlogPage() {
         >
           <div className="mt-16 h-screen">
             <div className="flex flex-col gap-5">
-              <div className="h-10 w-1/2 bg-gray-700/40 rounded animate-pulse"></div>
-              <div className="h-5 w-2/3 bg-gray-700/40 rounded animate-pulse"></div>
-
-              <div className="h-10 w-full rounded bg-gray-700/40 animate-pulse"></div>
-
+              <h1 className="text-4xl sm:text-5xl">Blog</h1>
+              <span className="text-lg sm:text-xl">
+                I write about web development, programming, and technology.
+              </span>
+              <Input type="text" placeholder="Search posts" />
               <hr className="border-zinc-200 dark:border-zinc-700" />
             </div>
+
 
             <div className="mt-5 flex flex-col justify-center gap-5">
               {[...Array(4)].map((_, i) => (

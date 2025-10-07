@@ -1,17 +1,13 @@
-import { NotionRenderer } from "react-notion-x";
-import "react-notion-x/src/styles.css";
-import "prismjs/themes/prism-tomorrow.css";
-import "katex/dist/katex.min.css";
-
+import NotionRenderer from "./Notion/NotinoRenderer";
 
 interface ArticleProps {
-    recordMap: any
+    content: Post['content'];
 }
 
-export default function Article({ recordMap }: ArticleProps) {
+export default function Article({ content }: ArticleProps) {
   return (
     <article className='prose prose-zinc dark:prose-invert max-w-none'>
-      <NotionRenderer recordMap={recordMap}  fullPage={true} darkMode={true} />
+      { content ? <NotionRenderer blocks={content} /> : null }
     </article>
   )
 }
