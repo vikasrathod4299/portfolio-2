@@ -78,22 +78,6 @@ export async function onRequest(context) {
 
     const blocksJson = await blocksRes.json()
 
-    const n2m = new NotionToMarkdown({
-      notionClient:  {blocks: {children: {list: async () => blocksJson}}}
-    })
-
-    const mdBlocks = await n2m.pageToMarkdown(blocksJson.results)
-    const mdString = n2m.toMarkdownString(mdBlocks)
-    const html = mdString.parent
-      .replace(/^### (.*$)/gim, "<h3>$1</h3>")
-      .replace(/^## (.*$)/gim, "<h2>$1</h2>")
-      .replace(/^# (.*$)/gim, "<h1>$1</h1>")
-      .replace(/^\> (.*$)/gim, "<blockquote>$1</blockquote>")
-      .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
-      .replace(/\*(.*)\*/gim, "<i>$1</i>")
-      .replace(/\n$/gim, "<br />");
-
-
     // 3. Compose the response object
     const props = page.properties
     const post = {
@@ -109,8 +93,7 @@ export async function onRequest(context) {
         props.Cover?.files?.[0]?.file?.url ||
         props.Cover?.files?.[0]?.external?.url ||
         null,
-      //content: mdString?.parent ? mdString.parent : null,
-      htmlContent: html ? html : null,
+      content: blocksJson.results || [],
     }
 
     return new Response(
