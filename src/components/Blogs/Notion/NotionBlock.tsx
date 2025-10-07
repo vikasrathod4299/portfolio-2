@@ -91,7 +91,7 @@ const NotionBlock = ({ block }: NotionBlockProps) => {
 
     case 'quote':
       return (
-        <blockquote className="border-l-4 border-gray-900 pl-4 py-2 mb-4 italic">
+        <blockquote className="border-l-4 border-white pl-4 py-2 mb-4 italic">
           <RichText text={value.rich_text} />
         </blockquote>
       );
