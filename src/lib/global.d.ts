@@ -30,6 +30,5 @@ interface Post {
       author: string;
       readingTime: number | null;
       url?: string;
-      content?: string;
-      htmlContent?: string;
+      content?: Array<{ type: string; [key: string]: any }>;
 }
