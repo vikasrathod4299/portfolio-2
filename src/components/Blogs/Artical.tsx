@@ -16,7 +16,10 @@ export default function Article({ pageId }: ArticleProps) {
       try {
         if (!pageId) return;
         const notion = new NotionAPI()
-        const data = await notion.getPage(`Hello-world-${pageId.replace('-', '')}`)
+        pageId = pageId.replace(/-/g, '')
+        toast.info(pageId)
+
+        const data = await notion.getPage(pageId)
         setRecordMap(data)
       } catch (error) {
         console.error('Error fetching Notion page:', error)
