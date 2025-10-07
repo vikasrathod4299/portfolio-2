@@ -16,7 +16,7 @@ export default function Article({ pageId }: ArticleProps) {
       try {
         if (!pageId) return;
         const notion = new NotionAPI()
-        pageId = pageId.replace(/-/g, '')
+        pageId = `Hello-world-${pageId.replace(/-/g, '')}`
         toast.info(pageId)
 
         const data = await notion.getPage(pageId)
