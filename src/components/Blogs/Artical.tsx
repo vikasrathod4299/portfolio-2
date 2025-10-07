@@ -14,7 +14,7 @@ export default function Article({ pageId }: ArticleProps) {
         async function fetchPage() {
       if (!pageId) return;
       const notion = new NotionAPI()
-      const data = await notion.getPage(pageId)
+      const data = await notion.getPage(pageId.replace('-', ''))
       setRecordMap(data)
     }
     fetchPage()
@@ -23,7 +23,7 @@ export default function Article({ pageId }: ArticleProps) {
 
   return (
     <article className='prose prose-zinc dark:prose-invert max-w-none'>
-        {recordMap ? <NotionRenderer recordMap={recordMap} /> : <p>Loading...</p>}
+        {recordMap ? <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={true}  /> : <p>Loading...</p>}
     </article>
   )
 }
