@@ -31,4 +31,5 @@ interface Post {
       readingTime: number | null;
       url?: string;
       content?: string;
+      htmlContent?: string;
 }
