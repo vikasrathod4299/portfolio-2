@@ -6,7 +6,7 @@ interface ArticleProps {
 
 export default function Article({ content }: ArticleProps) {
   return (
-    <article className='prose prose-zinc dark:prose-invert max-w-none'>
+    <article className='  max-w-none'>
       <NotionRenderer blocks={content} />
     </article>
   )
