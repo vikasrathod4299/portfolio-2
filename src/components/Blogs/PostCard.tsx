@@ -14,7 +14,7 @@ export default function PostCard({ post }: Props) {
       to={`/blog/${slug}` as never}
       preload="intent"
     >
-      <Card className="flex w-full">
+      <Card className="w-full hidden sm:flex">
         {cover && (
           <img
             src={cover}
