@@ -30,6 +30,8 @@ export default function BlogPage() {
     </div>
   );
 
+  console.log(isLoading);
+
 
   return (
     <Layout>
