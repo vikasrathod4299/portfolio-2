@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 const PostCardMobile = ({thumbnail , title, description, slug}: {thumbnail: string, title: string, description: string, slug: string}) => {
 
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-md bg-white dark:bg-[#1e1e1e] border border-gray-100 dark:border-gray-700 transition-all duration-300 sm:hidden">
+    <div className="max-w-sm rounded-lg overflow-hidden bg-white border border-gray-100 dark:border-gray-700 transition-all duration-300 sm:hidden">
       <img
         className="w-full h-56 object-cover"
         src={thumbnail}
@@ -17,7 +17,7 @@ const PostCardMobile = ({thumbnail , title, description, slug}: {thumbnail: stri
         <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
           {description}
         </p>
-        <Link key={slug} to={`/blog/${slug}` as never} preload="intent" className="px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-md text-sm font-medium hover:opacity-90 transition-all">
+        <Link key={slug} to={`/blog/${slug}` as never} preload="intent" className="shadow-md px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-md text-sm font-medium hover:opacity-90 transition-all">
           Read more
         </Link>
       </div>
