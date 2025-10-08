@@ -93,11 +93,11 @@ export function BlogPost() {
         </div>
 
         {cover ? (
-          <div className="relative mt-10 w-full">
+          <div className="relative mt-10 w-full aspect-[16/9] overflow-hidden rounded">
             <img
               src={cover}
               alt={title}
-              className="mx-auto h-auto w-full rounded object-cover max-h-96" 
+              className="mx-auto h-full w-full object-cover"
             />
           </div>
         ) : null}
