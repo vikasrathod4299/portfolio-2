@@ -1,5 +1,6 @@
 import Article from '@/components/Blogs/Artical'
 import Page from '@/components/Page'
+import Tags from '@/components/Ui/Tags'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from '@tanstack/react-router'
 import axios from 'axios'
@@ -890,37 +891,9 @@ export function BlogPost() {
       <div className="my-16">
         <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">{title}</h1>
 
-        <div className="mb-8 flex flex-wrap gap-2 text-xs">
-          {tags?.map((tag) => (
-            <span
-              key={tag}
-              className="
-                inline-block
-                rounded-full
-                px-3 py-1
-                backdrop-blur-md
-                border
-                text-gray-800
-                dark:text-gray-100
-                shadow-[0_4px_12px_rgba(0,0,0,0.05)]
-                dark:shadow-[0_4px_12px_rgba(0,0,0,0.3)]
-                bg-white/40
-                dark:bg-white/10
-                border-gray-300/30
-                dark:border-white/20
-                hover:bg-white/60
-                dark:hover:bg-white/20
-                transition-all
-                duration-300
-                cursor-default
-                animate-fade-in
-              "
-            >
-              #{tag}
-            </span>
-          ))}
-        </div>
-
+        {tags && tags.length > 0 ? (
+          <Tags tags={tags} />
+        ) : null}
 
         <div className="flex flex-col w-full text-lg sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
