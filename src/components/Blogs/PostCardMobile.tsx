@@ -1,27 +1,28 @@
-import { Link } from "node_modules/@tanstack/react-router/dist/esm/link";
+import { Link } from "@tanstack/react-router";
 
 
 const PostCardMobile = ({thumbnail , title, description, slug}: {thumbnail: string, title: string, description: string, slug: string}) => {
 
   return (
-    <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 sm:hidden">
-      <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-        <img src={thumbnail} alt="card-image" />
-      </div>
-      <div className="p-4">
-        <h6 className="mb-2 text-slate-800 text-xl font-semibold">
+    <div className="max-w-sm rounded-xl overflow-hidden shadow-md bg-white dark:bg-[#1e1e1e] border border-gray-100 dark:border-gray-700 transition-all duration-300">
+      <img
+        className="w-full h-56 object-cover"
+        src={thumbnail}
+        alt="People working outdoors"
+      />
+      <div className="p-5">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
           {title}
-        </h6>
-        <p className="text-slate-600 leading-normal font-light">
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
           {description}
         </p>
-      </div>
-      <div className="px-4 pb-4 pt-0 mt-2">
-        <Link key={slug} to={`/blog/${slug}` as never} preload="intent" className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" >
+        <Link key={slug} to={`/blog/${slug}` as never} preload="intent" className="px-4 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-md text-sm font-medium hover:opacity-90 transition-all">
           Read more
         </Link>
       </div>
-    </div>  
+    </div>
+
   );
 };
 
