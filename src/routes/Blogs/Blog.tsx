@@ -21,9 +21,6 @@ export default function BlogPage() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
- 
-
-
   return (
     <Layout>
       {!isPostRoute ? (
@@ -53,10 +50,10 @@ export default function BlogPage() {
               ) : (
                 <h1 className="text-center">No posts available.</h1>
               )) :  [...Array(4)].map((_, i) => (
-                <>
-                  <SkeletonPostCard key={i} />
-                  <SkeletonPostCardMobile key={i} />
-                </>
+                  <>
+                    <SkeletonPostCard key={i} />
+                    <SkeletonPostCardMobile key={i} />
+                  </>
               ))}
             </div>
           </div>

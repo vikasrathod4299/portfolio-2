@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import Card from '../Ui/Card'
 
 const SkeletonPostCard = () => (
-  <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm hidden sm:flex">
+  <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm hidden sm:flex-col">
     <div className="h-5 w-2/3 rounded bg-gray-700/40 mb-3"></div>
     <div className="h-4 w-1/3 rounded bg-gray-700/40 mb-4"></div>
     <div className="h-4 w-full rounded bg-gray-700/40 mb-2"></div>
@@ -20,11 +20,13 @@ export default function PostCard({ post }: Props) {
     <Link key={slug} to={`/blog/${slug}` as never} preload="intent">
       <Card className="w-full hidden sm:flex">
         {thumbnail && (
-          <img
-            src={thumbnail}
-            alt={title}
-            className="w-32 h-32 object-cover rounded-l"
-          />
+          <div className="p-4">
+            <img
+              src={thumbnail}
+              alt={title}
+              className="w-28 h-28 object-cover rounded-lg"
+            />
+          </div>
         )}
         <div className="flex flex-grow flex-col gap-3 p-6">
           <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:text-center">
