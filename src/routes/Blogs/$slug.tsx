@@ -22,7 +22,7 @@ export function BlogPost() {
   if (isLoading) {
     return (
       <Page title="Loading..." description="Fetching article">
-        <div className="my-16 animate-pulse">
+        <div className="my-18 animate-pulse">
           {/* Title Skeleton */}
           <div className="h-10 w-3/4 mb-6 rounded bg-gray-700/40"></div>
 

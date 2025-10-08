@@ -15,7 +15,7 @@ export function NotionImage({ src, alt }: { src: string; alt?: string }) {
         loading="lazy"
       />
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 dark:from-gray-700 dark:via-gray-800 dark:to-gray-700" />
+        <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-zinc-300 via-zinc-200 to-zinc-300 dark:from-zinc-700 dark:via-zinc-800 dark:to-zinc-700" />
       )}
     </div>
   );
