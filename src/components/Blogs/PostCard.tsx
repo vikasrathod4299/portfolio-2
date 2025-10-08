@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function PostCard({ post }: Props) {
-  const { title, description, slug, date, cover } = post;
+  const { title, description, slug, date, thumbnail } = post;
   return (
     <Link
       key={slug}
@@ -15,9 +15,9 @@ export default function PostCard({ post }: Props) {
       preload="intent"
     >
       <Card className="w-full hidden sm:flex">
-        {cover && (
+        {thumbnail && (
           <img
-            src={cover}
+            src={thumbnail}
             alt={title}
             className="w-32 h-32 object-cover rounded-l"
           />

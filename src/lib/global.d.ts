@@ -26,6 +26,7 @@ interface Post {
       tags: string[];
       description: string;
       cover?: string;
+      thumbnail?: string;
       published: boolean;
       author: string;
       readingTime: number | null;

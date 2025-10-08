@@ -55,7 +55,7 @@ export default function BlogPage() {
                 posts.map((post) => (
                   <>
                     <PostCard key={post.id} post={post} />
-                    <PostCardMobile key={post.id} thumbnail={post.cover || ""} title={post.title} description={post.description || ""} slug={post.slug} />
+                    <PostCardMobile key={post.id} thumbnail={post.thumbnail || ""} title={post.title} description={post.description || ""} slug={post.slug} />
                   </>
                 ))
               ) : (

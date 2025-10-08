@@ -1,7 +1,6 @@
 export async function onRequest(context) {
   const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
-
-  if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
+if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
     return new Response(
       JSON.stringify(
         { error: 'Notion configuration is missing.', success: false },
@@ -47,11 +46,9 @@ export async function onRequest(context) {
         date: props['Published Date']?.date?.start || '',
         tags: props.Tags?.multi_select?.map((tag) => tag.name) || [],
         description: props.Description?.rich_text?.[0]?.plain_text || '',
-        cover:
-          props.Cover?.files?.[0]?.file?.url ||
-          props.Cover?.files?.[0]?.external?.url ||
+        thumbnail: props.Thumbnail?.files?.[0]?.file?.url ||
+          props.Thumbnail?.files?.[0]?.external?.url ||
           null,
-        published: props.Published?.checkbox || false,
         author: props.Author?.rich_text?.[0]?.plain_text || 'Vikas Rathod',
         readingTime: props['Reading Time']?.number || null,
         url: page.url,
