@@ -24,29 +24,29 @@ export function BlogPost() {
       <Page title="Loading..." description="Fetching article">
         <div className="my-18 animate-pulse">
           {/* Title Skeleton */}
-          <div className="h-10 w-3/4 mb-6 rounded bg-gray-700/40"></div>
+          <div className="h-10 w-3/4 mb-6 rounded bg-zinc-700/40"></div>
 
           {/* Tags Skeleton */}
           <div className="flex flex-wrap gap-2 mb-6">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-6 w-16 rounded-full bg-gray-700/40"></div>
+              <div key={i} className="h-6 w-16 rounded-full bg-zinc-700/40"></div>
             ))}
           </div>
 
           {/* Author + Date Skeleton */}
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-8 w-8 rounded-full bg-gray-700/40"></div>
-            <div className="h-4 w-40 rounded bg-gray-700/40"></div>
-            <div className="h-4 w-24 rounded bg-gray-700/40"></div>
+            <div className="h-8 w-8 rounded-full bg-zinc-700/40"></div>
+            <div className="h-4 w-40 rounded bg-zinc-700/40"></div>
+            <div className="h-4 w-24 rounded bg-zinc-700/40"></div>
           </div>
 
           {/* Cover Image Skeleton */}
-          <div className="h-[300px] w-full rounded bg-gray-700/40 mb-10"></div>
+          <div className="aspect-[16/9] h-full w-full rounded bg-zinc-700/40 mb-10"></div>
 
           {/* Content Skeleton */}
           <div className="space-y-4">
             {[...Array(10)].map((_, i) => (
-              <div key={i} className="h-4 w-full rounded bg-gray-700/40"></div>
+              <div key={i} className="h-4 w-full rounded bg-zinc-700/40"></div>
             ))}
           </div>
         </div>

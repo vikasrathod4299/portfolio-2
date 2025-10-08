@@ -1,5 +1,5 @@
-import PostCard from "@/components/Blogs/PostCard";
-import PostCardMobile from "@/components/Blogs/PostCardMobile";
+import PostCard, { SkeletonPostCard } from "@/components/Blogs/PostCard";
+import PostCardMobile, { SkeletonPostCardMobile } from "@/components/Blogs/PostCardMobile";
 import Layout from "@/components/Layout";
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
@@ -21,15 +21,7 @@ export default function BlogPage() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
-  // --- Skeleton Loader ---
-  const SkeletonPostCard = () => (
-    <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm">
-      <div className="h-5 w-2/3 rounded bg-gray-700/40 mb-3"></div>
-      <div className="h-4 w-1/3 rounded bg-gray-700/40 mb-4"></div>
-      <div className="h-4 w-full rounded bg-gray-700/40 mb-2"></div>
-      <div className="h-4 w-5/6 rounded bg-gray-700/40"></div>
-    </div>
-  );
+ 
 
 
   return (
@@ -55,13 +47,16 @@ export default function BlogPage() {
                 posts.map((post) => (
                   <>
                     <PostCard key={post.id} post={post} />
-                    <PostCardMobile key={post.id} thumbnail={post.thumbnail || ""} title={post.title} description={post.description || ""} slug={post.slug} />
+                    <PostCardMobile key={post.id} isCover={post.thumbnail !== null} thumbnail={post.thumbnail || ""} title={post.title} description={post.description || ""} slug={post.slug} />
                   </>
                 ))
               ) : (
                 <h1 className="text-center">No posts available.</h1>
               )) :  [...Array(4)].map((_, i) => (
-                <SkeletonPostCard key={i} />
+                <>
+                  <SkeletonPostCard key={i} />
+                  <SkeletonPostCardMobile key={i} />
+                </>
               ))}
             </div>
           </div>

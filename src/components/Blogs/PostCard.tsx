@@ -1,19 +1,23 @@
-import { Link } from '@tanstack/react-router';
-import Card from '../Ui/Card';
+import { Link } from '@tanstack/react-router'
+import Card from '../Ui/Card'
 
+const SkeletonPostCard = () => (
+  <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm hidden sm:flex">
+    <div className="h-5 w-2/3 rounded bg-gray-700/40 mb-3"></div>
+    <div className="h-4 w-1/3 rounded bg-gray-700/40 mb-4"></div>
+    <div className="h-4 w-full rounded bg-gray-700/40 mb-2"></div>
+    <div className="h-4 w-5/6 rounded bg-gray-700/40"></div>
+  </div>
+)
 
 interface Props {
-  post: Post;
+  post: Post
 }
 
 export default function PostCard({ post }: Props) {
-  const { title, description, slug, date, thumbnail } = post;
+  const { title, description, slug, date, thumbnail } = post
   return (
-    <Link
-      key={slug}
-      to={`/blog/${slug}` as never}
-      preload="intent"
-    >
+    <Link key={slug} to={`/blog/${slug}` as never} preload="intent">
       <Card className="w-full hidden sm:flex">
         {thumbnail && (
           <img
@@ -31,7 +35,7 @@ export default function PostCard({ post }: Props) {
               {new Date(date).toLocaleDateString(undefined, {
                 month: 'short',
                 day: '2-digit',
-                year: 'numeric'
+                year: 'numeric',
               })}
             </span>
           </div>
@@ -39,5 +43,7 @@ export default function PostCard({ post }: Props) {
         </div>
       </Card>
     </Link>
-  );
+  )
 }
+
+export { SkeletonPostCard }

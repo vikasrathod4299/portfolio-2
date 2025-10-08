@@ -1,7 +1,17 @@
 import { Link } from "@tanstack/react-router";
 
+const SkeletonPostCardMobile = () => (
+  <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm sm:hidden">
+    <div className="h-40 w-full rounded bg-gray-700/40 mb-3"></div>
+    <div className="h-5 w-2/3 rounded bg-gray-700/40 mb-3"></div>
+    <div className="h-4 w-1/3 rounded bg-gray-700/40 mb-4"></div>
+    <div className="h-4 w-full rounded bg-gray-700/40 mb-2"></div>
+    <div className="h-8 w-24 rounded bg-gray-700/40 mt-4"></div>
+  </div>
+);
 
-const PostCardMobile = ({thumbnail , title, description, slug}: {thumbnail: string, title: string, description: string, slug: string}) => {
+const PostCardMobile = ({thumbnail, title, description, slug}: {thumbnail: string, title: string, description: string, slug: string, isCover: boolean}) => {
+
 
   return (
     <div className="max-w-sm rounded-lg overflow-hidden border bg-white dark:bg-zinc-900 border-gray-100 dark:border-gray-700 transition-all duration-300 sm:hidden">
@@ -10,6 +20,7 @@ const PostCardMobile = ({thumbnail , title, description, slug}: {thumbnail: stri
         src={thumbnail}
         alt="People working outdoors"
       />
+
       <div className="p-5">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
           {title}
@@ -27,3 +38,5 @@ const PostCardMobile = ({thumbnail , title, description, slug}: {thumbnail: stri
 };
 
 export default PostCardMobile;
+
+export { SkeletonPostCardMobile };
