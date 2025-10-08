@@ -1,14 +1,14 @@
 
 const TAG_COLORS = [
-  "bg-purple-600",
-  "bg-blue-500",
-  "bg-amber-700",
-  "bg-orange-600",
-  "bg-yellow-500 text-black",
-  "bg-green-600",
-  "bg-pink-700",
-  "bg-teal-600",
-  "bg-red-600",
+  "bg-purple-600/50",
+  "bg-blue-500/50",
+  "bg-amber-700/50",
+  "bg-orange-600/50",
+  "bg-yellow-500/50",
+  "bg-green-600/50",
+  "bg-pink-700/50",
+  "bg-teal-600/50",
+  "bg-red-600/50",
 ];
 
 function getColorForTag(tag:string) {
