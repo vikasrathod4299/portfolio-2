@@ -52,7 +52,7 @@ export default function BlogPage() {
 
 
             <div className="mt-5 flex flex-col justify-center gap-5">
-              {isLoading ? (posts && posts?.length > 0 ? (
+              {!isLoading ? (posts && posts?.length > 0 ? (
                 posts.map((post) => <PostCard key={post.id} post={post} />)
               ) : (
                 <h1 className="text-center">No posts available.</h1>
