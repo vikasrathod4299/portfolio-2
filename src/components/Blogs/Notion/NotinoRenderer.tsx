@@ -9,7 +9,7 @@ interface NotionRendererProps {
 
 const NotionRenderer = ({ blocks }: NotionRendererProps) => {
   if (!blocks || blocks.length === 0) {
-    return <div className="text-gray-500">No content available</div>;
+    return <div className="text-gray-500 dark:text-gray-400">No content available</div>;
   }
 
   // Group consecutive list items
@@ -39,7 +39,7 @@ const NotionRenderer = ({ blocks }: NotionRendererProps) => {
   });
 
   return (
-    <div className="max-w-3xl mx-auto font-sans text-zinc-900 dark:text-white">
+    <div className="max-w-3xl mx-auto text-gray-900 dark:text-gray-100">
       {groupedBlocks.map((item, index) => {
         if (item.type === 'bulleted') {
           return (

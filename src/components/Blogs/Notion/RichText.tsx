@@ -32,11 +32,11 @@ const RichText = ({ text }: RichTextProps) => {
         if (annotations.italic) content = <em>{content}</em>;
         if (annotations.strikethrough) content = <s>{content}</s>;
         if (annotations.underline) content = <u>{content}</u>;
-        if (annotations.code) content = <code className="bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-sm font-mono">{content}</code>;
+        if (annotations.code) content = <code className="bg-gray-100 dark:bg-gray-800 text-sky-600 dark:text-sky-400 px-1.5 py-0.5 rounded text-sm ">{content}</code>;
         
         if (link) {
           content = (
-            <a href={link.url} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+            <a href={link.url} className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
               {content}
             </a>
           );
