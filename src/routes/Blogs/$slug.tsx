@@ -1,4 +1,5 @@
 import Article from '@/components/Blogs/Artical'
+import { NotionImage } from '@/components/Blogs/Notion/NotionImage'
 import Page from '@/components/Page'
 import Tags from '@/components/Ui/Tags'
 import { useQuery } from '@tanstack/react-query'
@@ -94,11 +95,12 @@ export function BlogPost() {
 
         {cover ? (
           <div className="relative mt-10 w-full aspect-[16/9] overflow-hidden rounded">
-            <img
+            {/* <img
               src={cover}
               alt={title}
               className="mx-auto h-full w-full object-cover"
-            />
+            /> */}
+            <NotionImage src={cover} alt={title}  />
           </div>
         ) : null}
       </div>
