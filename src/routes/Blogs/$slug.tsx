@@ -97,7 +97,7 @@ export function BlogPost() {
             <img
               src={cover}
               alt={title}
-              className="mx-auto h-auto w-full rounded object-cover max-h-[200px] sm:max-h-[400px]" 
+              className="mx-auto h-auto w-full rounded object-cover max-h-[400px] sm:max-h-[200px]" 
             />
           </div>
         ) : null}
