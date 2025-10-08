@@ -94,14 +94,7 @@ export function BlogPost() {
         </div>
 
         {cover ? (
-          <div className="relative mt-10 w-full aspect-[16/9] overflow-hidden rounded">
-            {/* <img
-              src={cover}
-              alt={title}
-              className="mx-auto h-full w-full object-cover"
-            /> */}
             <NotionImage src={cover} alt={title}  />
-          </div>
         ) : null}
       </div>
 
