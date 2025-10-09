@@ -1,5 +1,5 @@
 export async function onRequest(context) {
-  const {  BLOG_CACHE, VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
+  const {  blog_cache, VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
 
   if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
     return new Response(
@@ -16,8 +16,8 @@ export async function onRequest(context) {
 
   try {
 
-    const cached = await BLOG_CACHE.get(cacheKey, {type: 'json'})
-
+    // Check cache first
+    const cached = await blog_cache.get(cacheKey, {type: 'json'})
     if(cached) {
       return new Response(JSON.stringify({ success: true, posts: cached , cached:true }), {
         headers: { 'Content-Type': 'application/json' },
@@ -26,7 +26,6 @@ export async function onRequest(context) {
 
     }
 
-    // Fetch blog posts from Notion
     const res = await fetch(NOTION_API_URL, {
       method: 'POST',
       headers: {
@@ -68,14 +67,13 @@ export async function onRequest(context) {
       }
     })
 
-    await BLOG_CACHE.put(cacheKey, JSON.stringify(posts), { expirationTtl: cacheTTL })
+    // Store in cache
+    await blog_cache.put(cacheKey, JSON.stringify(posts), { expirationTtl: cacheTTL })
 
     return new Response(JSON.stringify({ success: true, posts }), {
       headers: { 'Content-Type': 'application/json' },
       status: 200,
     })
-
-
 
   } catch (err) {
     console.error('Error fetching blogs:', err)
