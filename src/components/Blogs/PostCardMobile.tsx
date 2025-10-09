@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { NotionImage } from "./Notion/NotionImage";
 
-const SkeletonPostCardMobile = () => { (
+const SkeletonPostCardMobile = () => { 
+  return (
       <div className="max-w-sm rounded-sm overflow-hidden border bg-white dark:bg-zinc-900 border-gray-100 dark:border-gray-700 sm:hidden animate-pulse">
       {/* Thumbnail Skeleton */}
       <div className="w-full h-56 bg-gray-200 dark:bg-zinc-800" />
