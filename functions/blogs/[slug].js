@@ -82,8 +82,7 @@ export async function onRequest(context) {
     const readingTime = Math.ceil(
       (blocksJson.results || []).reduce((acc, block) => {
         if (block.type === 'paragraph') {
-          console.log('****************>',block)
-          const text = block.paragraph.text
+          const text = block.paragraph.rich_text
             .map((t) => t.plain_text)
             .join(' ')
           const wordCount = text.trim().split(/\s+/).length
