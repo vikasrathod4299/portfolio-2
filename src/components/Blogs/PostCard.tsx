@@ -4,7 +4,7 @@ import Card from '../Ui/Card'
 
 
 const SkeletonPostCard = () => (
-  <div className="hidden sm:flex w-full animate-pulse rounded-sm border border-zinc-700/30 shadow-sm bg-zinc-900">
+  <div className="flex w-full animate-pulse rounded-sm border border-zinc-700/30 shadow-sm bg-zinc-900">
     {/* Thumbnail placeholder */}
     <div className="p-3">
       <div className="w-24 h-24 rounded-sm bg-zinc-700/40"></div>

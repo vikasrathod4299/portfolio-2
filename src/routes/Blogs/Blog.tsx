@@ -50,10 +50,14 @@ export default function BlogPage() {
               ) : (
                 <h1 className="text-center">No posts available.</h1>
               )) :  [...Array(4)].map((_, i) => (
-                  <>
-                    <SkeletonPostCard key={i} />
-                    <SkeletonPostCardMobile key={i} />
-                  </>
+                  <div key={i}>
+                    <div className="hidden sm:block">
+                      <SkeletonPostCard />
+                    </div>
+                    <div className="sm:hidden">
+                      <SkeletonPostCardMobile />
+                    </div>
+                  </div>
               ))}
             </div>
           </div>

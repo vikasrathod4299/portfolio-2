@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { NotionImage } from "./Notion/NotionImage";
 
 const SkeletonPostCardMobile = () => (
-  <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm sm:hidden">
+  <div className="animate-pulse rounded-xl border border-zinc-700/30 p-5 shadow-sm">
     <div className="h-40 w-full rounded bg-gray-700/40 mb-3"></div>
     <div className="h-5 w-2/3 rounded bg-gray-700/40 mb-3"></div>
     <div className="h-4 w-1/3 rounded bg-gray-700/40 mb-4"></div>
@@ -20,6 +21,7 @@ const PostCardMobile = ({thumbnail, title, description, slug}: {thumbnail: strin
         src={thumbnail}
         alt="People working outdoors"
       />
+      <NotionImage src="/placeholder.png" />
 
       <div className="p-5">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
