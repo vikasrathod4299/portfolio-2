@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import Card from '../Ui/Card'
+import { NotionImage } from './Notion/NotionImage';
 
 
 
@@ -40,11 +41,7 @@ export default function PostCard({ post }: Props) {
       <Card className="w-full hidden sm:flex">
         {thumbnail && (
           <div className="p-3 ">
-            <img
-              src={thumbnail}
-              alt={title}
-              className="w-24 h-24 object-cover rounded-sm"
-            />
+            <NotionImage src={thumbnail} alt={title} aspect="1/1" width={24} height={24} className="object-cover rounded-sm" />
           </div>
         )}
         <div className="flex flex-grow flex-col gap-3 p-6">
