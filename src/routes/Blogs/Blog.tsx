@@ -1,5 +1,5 @@
 import PostCard, { SkeletonPostCard } from "@/components/Blogs/PostCard";
-import PostCardMobile, { SkeletonPostCardMobile } from "@/components/Blogs/PostCardMobile";
+import PostCardMobile from "@/components/Blogs/PostCardMobile";
 import Layout from "@/components/Layout";
 import Page from "@/components/Page";
 import Input from "@/components/Ui/Input";
@@ -52,7 +52,6 @@ export default function BlogPage() {
               )) :  [...Array(4)].map((_, i) => (
                   <>
                     <SkeletonPostCard key={i} />
-                    <SkeletonPostCardMobile key={i} />
                   </>
               ))}
             </div>

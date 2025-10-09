@@ -24,7 +24,7 @@ export default function PostCard({ post }: Props) {
             <img
               src={thumbnail}
               alt={title}
-              className="w-24 h-24 object-cover rounded-sm shadow-md"
+              className="w-24 h-24 object-cover rounded-sm"
             />
           </div>
         )}
