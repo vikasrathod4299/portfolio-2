@@ -16,12 +16,12 @@ const PostCardMobile = ({thumbnail, title, description, slug}: {thumbnail: strin
 
   return (
     <div className="max-w-sm rounded-lg overflow-hidden border bg-white dark:bg-zinc-900 border-gray-100 dark:border-gray-700 transition-all duration-300 sm:hidden">
-      <img
+      {/* <img
         className="w-full h-56 object-cover"
         src={thumbnail}
         alt="People working outdoors"
-      />
-      <NotionImage src="/placeholder.png" />
+      /> */}
+      <NotionImage src={thumbnail} alt={title} />
 
       <div className="p-5">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
