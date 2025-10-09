@@ -3,7 +3,7 @@ import Card from '../Ui/Card'
 
 
 const SkeletonPostCard = () => (
-  <div className="hidden sm:block animate-pulse rounded-sm border border-zinc-700/30 p-5 shadow-sm">
+  <div className="hidden sm:flex animate-pulse rounded-sm border border-zinc-700/30 p-5 shadow-sm">
     <div className="mb-3 h-24 w-24 rounded bg-zinc-700/40"></div>
     <div>
       <div className="h-5 w-2/3 rounded bg-zinc-700/40 mb-3"></div>
