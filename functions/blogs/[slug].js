@@ -79,6 +79,19 @@ export async function onRequest(context) {
 
     const blocksJson = await blocksRes.json()
 
+    const readingTime = Math.ceil(
+      (blocksJson.results || []).reduce((acc, block) => {
+        if (block.type === 'paragraph') {
+          const text = block.paragraph.text
+            .map((t) => t.plain_text)
+            .join(' ')
+          const wordCount = text.trim().split(/\s+/).length
+          return acc + wordCount
+        }
+        return acc
+      }, 0) / 200,
+    ) 
+
     // 3. Compose the response object
     const props = page.properties
     const post = {
@@ -89,7 +102,7 @@ export async function onRequest(context) {
       date: props['Published Date']?.date?.start || '',
       tags: props.Tags?.multi_select?.map((t) => t.name) || [],
       author: props.Author?.rich_text?.[0]?.plain_text || 'Vikas Rathod',
-      readingTime: props['Reading Time']?.number || null,
+      readingTime: readingTime,
       cover:
         props.Cover?.files?.[1]?.file?.url ||
         props.Cover?.files?.[1]?.external?.url ||
