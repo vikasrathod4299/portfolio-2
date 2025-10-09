@@ -20,7 +20,7 @@ export default function PostCard({ post }: Props) {
     <Link key={slug} to={`/blog/${slug}` as never} preload="intent">
       <Card className="w-full hidden sm:flex">
         {thumbnail && (
-          <div className="p-3">
+          <div className="p-3 shadow-md">
             <img
               src={thumbnail}
               alt={title}
