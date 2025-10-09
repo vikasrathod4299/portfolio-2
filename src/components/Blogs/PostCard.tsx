@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import Card from '../Ui/Card'
 
 const SkeletonPostCard = () => (
-  <div className="animate-pulse rounded-sm border border-zinc-700/30 p-5 shadow-sm hidden sm:flex-col">
+  <div className="animate-pulse rounded-sm border border-zinc-700/30 p-5 shadow-sm sm:flex-col">
     <div className="h-5 w-2/3 rounded bg-zinc-700/40 mb-3"></div>
     <div className="h-4 w-1/3 rounded bg-zinc-700/40 mb-4"></div>
     <div className="h-4 w-full rounded bg-zinc-700/40 mb-2"></div>
