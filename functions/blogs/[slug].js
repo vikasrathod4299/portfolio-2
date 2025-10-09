@@ -1,6 +1,7 @@
 
 export async function onRequest(context) {
-  const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
+  const { BLOG_CACHE, VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
+
   const slug = context.params.slug
 
   if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
@@ -22,7 +23,22 @@ export async function onRequest(context) {
     )
   }
 
+  const cacheKey = `post_${slug}`
+  const cacheTTL = 60 * 30
+
   try {
+
+    // Check cache first
+    const cached = await BLOG_CACHE.get(cacheKey, { type: 'json' })
+    if (cached) {
+      return new Response(JSON.stringify({ success: true, post: cached, cached: true }), {
+        headers: { 'Content-Type': 'application/json' },
+        status: 200,
+      })
+    }
+
+
+
     // 1. Query database to find page with matching slug
     const queryUrl = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`
     const queryRes = await fetch(queryUrl, {
@@ -109,6 +125,10 @@ export async function onRequest(context) {
         null,
       content: blocksJson.results || [],
     }
+
+    // Cache the result
+    await BLOG_CACHE.put(cacheKey, JSON.stringify(post), { expirationTtl: cacheTTL })
+
 
     return new Response(
       JSON.stringify({
