@@ -13,7 +13,7 @@ export async function onRequest(context) {
   const cacheTTL = 60 * 30; // 30 minutes
 
   try {
-    // 1️⃣ Try KV cache
+    // Try KV cache
     const cached = await BLOG_CACHE.get(cacheKey, { type: 'json' });
     if (cached) {
       return new Response(JSON.stringify({ success: true, posts: cached, cached: true }), {
@@ -21,7 +21,6 @@ export async function onRequest(context) {
       });
     }
 
-    // 2️⃣ Fetch from Notion
     const res = await fetch(NOTION_API_URL, {
       method: 'POST',
       headers: {
@@ -55,7 +54,7 @@ export async function onRequest(context) {
       };
     });
 
-    // 3️⃣ Save to KV cache
+    // Save to KV cache
     await BLOG_CACHE.put(cacheKey, JSON.stringify(posts), { expirationTtl: cacheTTL });
 
     return new Response(JSON.stringify({ success: true, posts, cached: false }), {
