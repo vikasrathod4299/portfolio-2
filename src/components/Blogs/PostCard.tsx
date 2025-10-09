@@ -28,7 +28,6 @@ const SkeletonPostCard = () => (
 );
 
 
-
 interface Props {
   post: Post
 }

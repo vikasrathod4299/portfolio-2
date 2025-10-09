@@ -1,6 +1,7 @@
 export async function onRequest(context) {
-  const { VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
-if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
+  const {  BLOG_CACHE, VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
+
+  if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
     return new Response(
       JSON.stringify(
         { error: 'Notion configuration is missing.', success: false },
@@ -8,9 +9,23 @@ if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
       ),
     )
   }
+
   const NOTION_API_URL = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`
+  const cacheKey =  'all_posts_v1'
+  const cacheTTL = 60 * 30 // 15 minutes
 
   try {
+
+    const cached = await BLOG_CACHE.get(cacheKey, {type: 'json'})
+
+    if(cached) {
+      return new Response(JSON.stringify({ success: true, posts: cached , cached:true }), {
+        headers: { 'Content-Type': 'application/json' },
+        status: 200,
+      })
+
+    }
+
     // Fetch blog posts from Notion
     const res = await fetch(NOTION_API_URL, {
       method: 'POST',
@@ -35,10 +50,8 @@ if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
 
     const data = await res.json()
 
-    // Transform Notion data → simplified JSON
     const posts = data.results.map((page) => {
       const props = page.properties
-
       return {
         id: page.id,
         title: props.Name?.title?.[0]?.plain_text || 'Untitled',
@@ -55,11 +68,15 @@ if (!VITE_NOTION_TOKEN || !VITE_NOTION_DATA_SOURCE_ID) {
       }
     })
 
-    // Return posts as JSON
+    await BLOG_CACHE.put(cacheKey, JSON.stringify(posts), { expirationTtl: cacheTTL })
+
     return new Response(JSON.stringify({ success: true, posts }), {
       headers: { 'Content-Type': 'application/json' },
       status: 200,
     })
+
+
+
   } catch (err) {
     console.error('Error fetching blogs:', err)
     return new Response(
