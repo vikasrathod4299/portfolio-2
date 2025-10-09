@@ -11,8 +11,8 @@ export async function onRequest(context) {
   }
 
   const NOTION_API_URL = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`
-  const cacheKey =  'all_posts_v1'
-  const cacheTTL = 60 * 30 // 15 minutes
+  const cacheKey =  'all_posts'
+  const cacheTTL = 60 * 30 // 30 minutes
 
   try {
 

@@ -6,6 +6,7 @@ import {
   IconBrandLinkedin,
   IconMail,
   IconBrandTwitter,
+  IconDownload,
 } from '@tabler/icons-react'
 import SocialIcon from './SocialIcons'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
@@ -69,7 +70,7 @@ export default function Profile() {
           />
         </div>
 
-        <span className="mt-6 text-4xl sm:text-5xl ">
+        <span className="mt-6 text-4xl dark:text-zinc-200 text-zinc-900 sm:text-5xl ">
           Hi, I am Vikas.
         </span>
 
@@ -78,16 +79,20 @@ export default function Profile() {
           typeSpeed={60}
           backSpeed={40}
           showCursor={true}
-          className="text-2xl sm:text-4xl" 
+          className="text-2xl sm:text-4xl dark:text-zinc-200 text-zinc-900" 
         />
         <span className="sm:text-lg">
           I&apos;m a software engineer with experience in delivering clean,
           elegant and efficent code.
         </span>
-        <div>
-          <button className="flex items-center gap-4 rounded border px-2 py-1 text-sm transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 sm:text-base">
-            <span>Download Resume </span>
+        <div className='flex gap-3'>
+          <button className="flex items-center gap-4 rounded border border-zinc-900 dark:border-zinc-200 px-2 py-1 text-sm transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 sm:text-base cursor-pointer">
+            <span>Blog</span>
           </button>
+          <button onClick={() => window.open('/media/Vikas-Rathod-Resume.pdf', '_blank')} className="flex items-center gap-4 rounded border border-zinc-900 dark:border-zinc-200 px-2 py-1 text-sm transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 sm:text-base cursor-pointer">
+            <span>Resume</span> <IconDownload className='-ml-2 text-zinc-900 dark:text-zinc-200' size={16} />
+          </button>
+          
         </div>
         <div className="flex flex-col gap-4 sm:gap-5 xl:flex-row xl:items-center">
           <div className="flex gap-5">

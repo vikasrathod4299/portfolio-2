@@ -17,7 +17,7 @@ const NotionBlock = ({ block }: NotionBlockProps) => {
   switch (type) {
     case 'paragraph':
       return (
-        <p className="mb-8 leading-relaxed sm:text-lg text-zinc-900 dark:text-zinc-300">
+        <p className="mb-8 leading-relaxed sm:text-lg text-zinc-900 dark:text-zinc-400">
           <RichText text={value.rich_text} />
         </p>
       )

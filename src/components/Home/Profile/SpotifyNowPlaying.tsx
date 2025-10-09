@@ -24,7 +24,7 @@ export default function SpotifyNowPlaying() {
             </a>
             <span className="text-sm font-semibold text-black dark:text-white sm:text-base">
             {!nowPlaying || !nowPlaying.isPlaying ? "Not Playing": nowPlaying.name.length > 30 ? nowPlaying.name.slice(0, 30) + "..." : nowPlaying.name}
-            <span className="font-normal text-zinc-500" >
+            <span className="font-normal text-zinc-400" >
                 {`
                     - ${
                         !nowPlaying || !nowPlaying.isPlaying ? "Spotify": nowPlaying.artist.length > 30 ? nowPlaying.artist.slice(0, 30) + "..." : nowPlaying.artist
