@@ -55,7 +55,7 @@ export default function BlogPage() {
                       <SkeletonPostCard />
                     </div>
                     <div className="sm:hidden">
-                      <SkeletonPostCardMobile />
+                      <SkeletonPostCardMobile key={i} />
                     </div>
                   </div>
               ))}

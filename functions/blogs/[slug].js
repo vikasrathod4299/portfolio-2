@@ -82,6 +82,7 @@ export async function onRequest(context) {
     const readingTime = Math.ceil(
       (blocksJson.results || []).reduce((acc, block) => {
         if (block.type === 'paragraph') {
+          console.log('****************>',block)
           const text = block.paragraph.text
             .map((t) => t.plain_text)
             .join(' ')
