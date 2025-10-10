@@ -74,6 +74,7 @@ declare module '@tanstack/react-router' {
   }
 }
 
+
 const rootElement = document.getElementById('app')
 
 if (rootElement && !rootElement.innerHTML) {
