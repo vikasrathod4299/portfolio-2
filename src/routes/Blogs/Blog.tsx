@@ -28,7 +28,7 @@ export default function BlogPage() {
           title="Vikas Rathod | Blog"
           description="Read my latest blog posts on software engineering, programming, and technology."
         >
-          <div className="mt-16 h-screen">
+          <div className="mt-32 h-screen">
             <div className="flex flex-col gap-5">
               <h1 className="text-4xl sm:text-5xl">Blog</h1>
               <span className="text-lg sm:text-xl">
