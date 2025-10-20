@@ -68,7 +68,7 @@ export async function onRequest(context) {
     })
 
     // Store in cache
-    await BLOG_CACHE.put(cacheKey, JSON.stringify(posts), { expirationTtl: cacheTTL })
+    await BLOG_CACHE.put(cacheKey, JSON.stringify(posts))
 
     return new Response(JSON.stringify({ success: true, posts }), {
       headers: { 'Content-Type': 'application/json' },

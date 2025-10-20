@@ -65,7 +65,7 @@ export function BlogPost() {
       date={date ? new Date(date).toISOString() : undefined}
       type="article"
     >
-      <div className="my-16">
+      <div className="mb-16  mt-32">
         <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">{title}</h1>
 
         {tags && tags.length > 0 ? (

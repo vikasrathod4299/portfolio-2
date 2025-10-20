@@ -127,7 +127,7 @@ export async function onRequest(context) {
     }
 
     // Cache the result
-    await BLOG_CACHE.put(cacheKey, JSON.stringify(post), { expirationTtl: cacheTTL })
+    await BLOG_CACHE.put(cacheKey, JSON.stringify(post))
 
 
     return new Response(
