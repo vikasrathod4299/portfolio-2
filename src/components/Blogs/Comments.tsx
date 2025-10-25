@@ -22,7 +22,7 @@ export default function Comments() {
                 strict="0"
                 reactionsEnabled="1"        
                 emitMetadata="0"
-                inputPosition="bottom"
+                inputPosition="top"
                 theme={theme === 'light' ? 'light' : 'transparent_dark'}
                 lang="en"
                 loading="lazy"
