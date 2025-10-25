@@ -20,7 +20,7 @@ export default function Comments() {
                 categoryId='DIC_kwDOPqfWJM4CxDVx'
                 mapping="pathname"
                 strict="0"
-                reactionsEnabled="1"        
+                reactionsEnabled="0"        
                 emitMetadata="0"
                 inputPosition="top"
                 theme={theme === 'light' ? 'light' : 'transparent_dark'}
