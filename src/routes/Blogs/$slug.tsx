@@ -96,7 +96,7 @@ export function BlogPost() {
         </div>
 
         {cover ? (
-            <NotionImage src={cover} alt={title}  aspect='16/9' width={'full'}  className='mt-10 rounded'/>
+            <NotionImage src={cover} alt={title}  aspect='16/9' width={'full'}  className='mt-8 rounded'/>
         ) : null}
       </div>
 
