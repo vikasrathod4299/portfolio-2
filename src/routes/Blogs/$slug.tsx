@@ -1,4 +1,5 @@
 import Article from '@/components/Blogs/Artical'
+import Comments from '@/components/Blogs/Comments'
 import { NotionImage } from '@/components/Blogs/Notion/NotionImage'
 import Page from '@/components/Page'
 import Tags from '@/components/Ui/Tags'
@@ -100,6 +101,8 @@ export function BlogPost() {
       </div>
 
       {content ? <Article content={content} /> : null}
+
+      <Comments />
     </Page>
   )
 }
