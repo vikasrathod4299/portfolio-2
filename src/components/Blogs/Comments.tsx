@@ -14,7 +14,7 @@ export default function Comments() {
                Leave a comment
             </h1>
             <Giscus 
-                repo={'vikasrathod/portfolio-2'}
+                repo={'vikasrathod4299/portfolio-2'}
                 repoId='R_kgDOPqfWJA'
                 category='General'
                 categoryId='DIC_kwDOPqfWJM4CxDVx'
