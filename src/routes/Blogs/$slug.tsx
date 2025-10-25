@@ -36,14 +36,14 @@ export function BlogPost() {
           </div>
 
           {/* Author + Date Skeleton */}
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-6">
             <div className="h-8 w-8 rounded-full bg-zinc-700/40"></div>
             <div className="h-4 w-40 rounded bg-zinc-700/40"></div>
             <div className="h-4 w-24 rounded bg-zinc-700/40"></div>
           </div>
 
           {/* Cover Image Skeleton */}
-          <div className="aspect-[16/9] h-full w-full rounded bg-zinc-700/40 mb-10"></div>
+          <div className="aspect-[16/9] h-full w-full rounded bg-zinc-700/40 mb-6"></div>
 
           {/* Content Skeleton */}
           <div className="space-y-4">
