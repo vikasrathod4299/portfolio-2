@@ -23,7 +23,7 @@ export default function Comments() {
                 reactionsEnabled="0"        
                 emitMetadata="0"
                 inputPosition="top"
-                theme={theme === 'light' ? 'catppuccin_latte' : 'transparent_dark'}
+                theme={theme === 'light' ? 'catppuccin_latte' : 'catppuccin_mocha'}
                 lang="en"
                 loading="lazy"
              />
