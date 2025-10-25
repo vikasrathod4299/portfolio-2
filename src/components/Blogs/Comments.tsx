@@ -1,8 +1,21 @@
 import Giscus from '@giscus/react'
 import classNames from 'classnames'
+import { useEffect, useState } from 'react'
 
 export default function Comments() {
-    const theme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
+    const [theme , setTheme] = useState((localStorage.getItem('theme') as 'light' | 'dark') || 'light')
+
+    useEffect(() => {
+        const handleStorageChange = () => {
+            const storedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
+            setTheme(storedTheme)
+        }   
+
+        window.addEventListener('storage', handleStorageChange)
+        return () => {
+            window.removeEventListener('storage', handleStorageChange)
+        }
+    }, [])
 
     return (
         <div className='mt-16'>
