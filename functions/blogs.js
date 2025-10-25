@@ -1,7 +1,6 @@
-function optimizeNotionImage(url) {
-  return `/image-proxy?url=${encodeURIComponent(url)}`
-}
-
+// function optimizeNotionImage(url) {
+  // return `/image-proxy?url=${encodeURIComponent(url)}`
+// }
 
 export async function onRequest(context) {
   const {  BLOG_CACHE, VITE_NOTION_TOKEN, VITE_NOTION_DATA_SOURCE_ID } = context.env
@@ -23,12 +22,12 @@ export async function onRequest(context) {
 
     // Check cache first
     const cached = await BLOG_CACHE.get(cacheKey, {type: 'json'})
-    //if(cached) {
-    //  return new Response(JSON.stringify({ success: true, posts: cached , cached:true }), {
-    //    headers: { 'Content-Type': 'application/json' },
-    //    status: 200,
-    //  })
-    //}
+    if(cached) {
+      return new Response(JSON.stringify({ success: true, posts: cached , cached:true }), {
+        headers: { 'Content-Type': 'application/json' },
+        status: 200,
+      })
+    }
 
     const res = await fetch(NOTION_API_URL, {
       method: 'POST',
@@ -62,8 +61,8 @@ export async function onRequest(context) {
         date: props['Published Date']?.date?.start || '',
         tags: props.Tags?.multi_select?.map((tag) => tag.name) || [],
         description: props.Description?.rich_text?.[0]?.plain_text || '',
-        thumbnail: optimizeNotionImage(props.Cover?.files?.[0]?.file?.url) ||
-          optimizeNotionImage(props.Cover?.files?.[0]?.external?.url) ||
+        thumbnail: props.Cover?.files?.[0]?.file?.url ||
+          props.Cover?.files?.[0]?.external?.url ||
           null,
         author: props.Author?.rich_text?.[0]?.plain_text || 'Vikas Rathod',
         readingTime: props['Reading Time']?.number || null,
