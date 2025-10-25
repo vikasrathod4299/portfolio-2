@@ -45,7 +45,7 @@ const NotionBlock = ({ block }: NotionBlockProps) => {
 
     case 'bulleted_list_item':
       return (
-        <li className="ml-6 mb-1 list-disc">
+        <li className="ml-6 mb-1 list-disc text-zinc-900 dark:text-zinc-400">
           <RichText text={value.rich_text} />
         </li>
       )
