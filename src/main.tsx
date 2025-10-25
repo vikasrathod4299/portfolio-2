@@ -19,6 +19,7 @@ import reportWebVitals from './reportWebVitals.ts'
 import App from './App.tsx'
 import BlogPage from './routes/Blogs/Blog.tsx'
 import { BlogPost } from './routes/Blogs/$slug.tsx'
+import { ThemeProvider } from './context/ThemeContext.tsx'
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -83,9 +84,11 @@ if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
+      <ThemeProvider>
       <TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
         <RouterProvider router={router} />
       </TanStackQueryProvider.Provider>
+      </ThemeProvider>
     </StrictMode>,
   )
 }

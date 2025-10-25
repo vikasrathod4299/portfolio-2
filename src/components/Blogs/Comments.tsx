@@ -1,21 +1,9 @@
+import { useTheme } from '@/context/ThemeContext';
 import Giscus from '@giscus/react'
 import classNames from 'classnames'
-import { useEffect, useState } from 'react'
 
 export default function Comments() {
-    const [theme , setTheme] = useState((localStorage.getItem('theme') as 'light' | 'dark') || 'light')
-
-    useEffect(() => {
-        const handleStorageChange = () => {
-            const storedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
-            setTheme(storedTheme)
-        }   
-
-        window.addEventListener('storage', handleStorageChange)
-        return () => {
-            window.removeEventListener('storage', handleStorageChange)
-        }
-    }, [])
+    const { theme } = useTheme();
 
     return (
         <div className='mt-16'>
@@ -27,6 +15,7 @@ export default function Comments() {
                Leave a comment
             </h1>
             <Giscus 
+                key={theme}
                 repo={'vikasrathod4299/portfolio-2'}
                 repoId='R_kgDOPqfWJA'
                 category='General'
@@ -36,7 +25,7 @@ export default function Comments() {
                 reactionsEnabled="0"        
                 emitMetadata="0"
                 inputPosition="top"
-                theme={theme === 'light' ? 'catppuccin_latte' : 'catppuccin_mocha'}
+                theme={theme === 'light' ? 'catppuccin_latte' : 'transparent_dark'}
                 lang="en"
                 loading="lazy"
              />

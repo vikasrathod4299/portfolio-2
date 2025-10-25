@@ -1,20 +1,12 @@
-import { useEffect, useState } from 'react'
 import { IconSun, IconMoon} from '@tabler/icons-react'
+import { useTheme } from '@/context/ThemeContext'
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(
-    (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
-  )
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
+  const { theme, toggleTheme} = useTheme()
   return (
     <button
       className="rounded px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      onClick={toggleTheme}
     >
       {theme === 'dark' ? <IconSun /> : <IconMoon />}
     </button>
