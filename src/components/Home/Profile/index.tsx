@@ -70,7 +70,7 @@ export default function Profile() {
           />
         </div>
 
-        <span className="mt-6 text-4xl dark:text-zinc-200 text-zinc-900 sm:text-5xl ">
+        <span className="text-4xl dark:text-zinc-200 text-zinc-900 sm:text-5xl ">
           Hi, I am Vikas.
         </span>
 
