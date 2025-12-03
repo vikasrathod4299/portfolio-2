@@ -14,12 +14,23 @@ export default function ExperienceTab({
   return (
     <button
       className={classNames(
-        'w-full border-l border-l-zinc-200 px-5 py-3 text-left font-bold transition-colors',
-        'hover:bg-sky-100 hover:text-primary-500',
-        'dark:border-l-zinc-600 dark:hover:bg-opacity-20',
-        'dark:hover:bg-sky-900 dark:hover:text-primary-500',
+        // Base styles
+        'px-3 py-1.5 text-xs font-semibold transition-all duration-200 whitespace-nowrap',
+        // Mobile: pill style with border (brutalist style)
+        'rounded-md sm:rounded-none border border-gray-800 dark:border-white/80 sm:border-0',
+        // Desktop: left border style
+        'sm:w-full sm:border-l-2 sm:px-5 sm:py-3 sm:text-left sm:text-sm',
+        // Default state
+        'text-gray-800 dark:text-gray-200',
+        'bg-transparent sm:bg-transparent',
+        'sm:border-l-gray-200 sm:dark:border-l-zinc-700',
+        // Hover state
+        'hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900',
+        'sm:hover:bg-transparent sm:hover:text-primary-500 dark:sm:hover:bg-transparent dark:sm:hover:text-primary-400',
+        'sm:hover:border-l-primary-500',
+        // Active state
         {
-          '!border-primary-500 bg-sky-100 text-primary-500 dark:bg-sky-900 dark:!bg-opacity-20 dark:text-primary-500':
+          'bg-gray-800 text-white dark:bg-white dark:text-gray-900 sm:bg-transparent sm:text-primary-500 dark:sm:bg-transparent dark:sm:text-primary-400 sm:border-l-primary-500 sm:dark:border-l-primary-400':
             active
         }
       )}

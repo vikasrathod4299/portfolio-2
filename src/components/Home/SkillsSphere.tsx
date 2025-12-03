@@ -22,11 +22,11 @@ interface AnimationState {
   isHovering: boolean;
 }
 
-// Helper Component for Mobile Cards
+// Helper Component for Mobile Cards - Brutalist/Minimalist style
 const MobileCard = ({ skill }: { skill: Skill }) => (
-  <div className="flex items-center gap-3 bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-4 rounded-xl backdrop-blur-sm w-[150px] flex-shrink-0">
-    <i className={`${skill.icon} text-3xl`} style={{ color: skill.color }}></i>
-    <span className="text-gray-700 dark:text-gray-300 font-bold text-sm">{skill.name}</span>
+  <div className="flex items-center gap-2 bg-transparent border border-gray-800 dark:border-white/80 px-3 py-2 rounded-md w-[140px] flex-shrink-0 transition-all duration-200 hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900">
+    <i className={`${skill.icon} text-xl`} style={{ color: skill.color }}></i>
+    <span className="text-gray-800 dark:text-gray-200 font-semibold text-xs">{skill.name}</span>
   </div>
 );
 
