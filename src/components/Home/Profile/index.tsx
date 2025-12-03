@@ -83,7 +83,7 @@ export default function Profile() {
         {/* Brutalist buttons */}
         <div className='flex gap-3 flex-wrap mt-1'>
           <a 
-            href="/blogs"
+            href="/blog"
             className="group relative inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium uppercase tracking-wider
                        border-2 border-gray-800 dark:border-white/80 bg-transparent
                        text-gray-800 dark:text-white
