@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {ReactTyped} from 'react-typed'
 import classNames from 'classnames'
 import {
@@ -38,6 +39,8 @@ const socialIcons = [
 ]
 
 export default function Profile() {
+  const [imageLoaded, setImageLoaded] = useState(false)
+
   return (
     <div
       className={classNames(
@@ -49,10 +52,23 @@ export default function Profile() {
         {/* Profile Image with brutalist border */}
         <div className="relative h-24 w-24 sm:h-28 sm:w-28 mb-2">
           <div className="absolute inset-0 border-2 border-gray-800 dark:border-white/80 rounded-lg translate-x-1.5 translate-y-1.5" />
+          {/* Placeholder while loading */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 z-10 rounded-lg border-2 border-gray-800 dark:border-white/80 bg-zinc-800 animate-pulse" />
+          )}
           <img
             src="/media/profile.jpeg"
             alt="Vikas Rathod"
-            className="relative z-10 h-full w-full object-cover rounded-lg border-2 border-gray-800 dark:border-white/80 bg-white dark:bg-zinc-900"
+            width={112}
+            height={112}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            onLoad={() => setImageLoaded(true)}
+            className={classNames(
+              "relative z-10 h-full w-full object-cover rounded-lg border-2 border-gray-800 dark:border-white/80 bg-white dark:bg-zinc-900 transition-opacity duration-300",
+              imageLoaded ? "opacity-100" : "opacity-0"
+            )}
           />
         </div>
 
