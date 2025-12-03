@@ -203,11 +203,11 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
               ref={(el) => {
                 itemsRef.current[index] = el;
               }}
-              className="absolute top-0 left-0 flex items-center gap-2 text-gray-700 dark:text-slate-300 font-bold text-xl px-5 py-3 
+              className="absolute top-0 left-0 flex items-center gap-2 text-gray-800 dark:text-white font-semibold text-base px-4 py-2.5 
                          pointer-events-none select-none whitespace-nowrap 
-                         bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg backdrop-blur-sm shadow-lg"
+                         bg-transparent border-2 border-gray-800 dark:border-white/80"
             >
-              <i className={`${skill.icon} text-3xl`} style={{ color: skill.color }}></i>
+              <i className={`${skill.icon} text-2xl`} style={{ color: skill.color }}></i>
               {skill.name}
             </div>
           ))}
