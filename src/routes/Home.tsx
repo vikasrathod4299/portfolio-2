@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <Page>
             <Profile />
-            <div className="mb-10 flex flex-col gap-80">
+            <div className="mb-10 flex flex-col gap-32">
                 <SkillsSection />
                 <ExperienceSection />
                 <ContactSection />

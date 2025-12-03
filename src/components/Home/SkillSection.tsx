@@ -1,6 +1,7 @@
 import skills from '../../data/skills.json';
 
 import Section from './Section';
+import SkillsSphere from './SkillsSphere';
 
 export default function SkillsSection() {
   return (
@@ -9,11 +10,7 @@ export default function SkillsSection() {
       label="Skills"
       description="Here are a few technologies I’ve been working with recently:"
     >
-      <ul className="ml-5 grid list-disc grid-cols-2 gap-3 sm:grid-cols-3 animate-fade-in">
-        {skills.sort().map((skill) => (
-          <li key={skill}>{skill}</li>
-        ))}
-      </ul>
+     <SkillsSphere skillsData={skills} />
     </Section>
   );
 }
