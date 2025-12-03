@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 interface Skill {
   name: string;
@@ -22,10 +22,21 @@ interface AnimationState {
   isHovering: boolean;
 }
 
+// Helper Component for Mobile Cards
+const MobileCard = ({ skill }: { skill: Skill }) => (
+  <div className="flex items-center gap-3 bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-4 rounded-xl backdrop-blur-sm w-[150px] flex-shrink-0">
+    <i className={`${skill.icon} text-3xl`} style={{ color: skill.color }}></i>
+    <span className="text-gray-700 dark:text-gray-300 font-bold text-sm">{skill.name}</span>
+  </div>
+);
+
 const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]); // Stores references to the DOM elements
   
+  // State to track mobile view
+  const [isMobile, setIsMobile] = useState(false);
+
   // We use a ref for the animation state to avoid triggering React re-renders for every frame
   const animationStateRef = useRef<AnimationState>({
     items: [], // Stores x, y, z, opacity of each item
@@ -37,9 +48,18 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
 
   // Configuration
   const radius = 220;
+
+  // Split data for mobile columns
+  const { col1Data, col2Data } = useMemo(() => {
+    const halfLength = Math.ceil(skillsData.length / 2);
+    return {
+      col1Data: [...skillsData.slice(0, halfLength), ...skillsData.slice(0, halfLength)],
+      col2Data: [...skillsData.slice(halfLength), ...skillsData.slice(halfLength)]
+    };
+  }, [skillsData]);
   
 
-  // Inject Devicon CDN
+  // Inject Devicon CDN & Handle Window Resize
   useEffect(() => {
     if (!document.getElementById('devicon-css')) {
       const link = document.createElement('link');
@@ -48,10 +68,17 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
       link.href = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css';
       document.head.appendChild(link);
     }
+
+    // Check Mobile
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Initialize Animation State (Positions)
+  // Initialize Animation State (Positions) - Desktop Only
   useEffect(() => {
+    if (isMobile) return;
     // Calculate initial positions on a sphere (Fibonacci Sphere algorithm)
     animationStateRef.current.items = skillsData?.map((_, index) => {
       const phi = Math.acos(-1 + (2 * index + 1) / skillsData.length);
@@ -64,11 +91,11 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
         opacity: 1
       };
     });
-  }, [skillsData, radius]);
+  }, [skillsData, radius, isMobile]);
 
-  // Main Animation Loop
+  // Main Animation Loop - Desktop Only
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
     
     let animationFrameId: number;
 
@@ -123,13 +150,12 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [radius]); // Dependencies: only radius needs to trigger full restart
+  }, [radius, isMobile]); // Dependencies: radius and isMobile
 
   // --- Interaction Handlers ---
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
     const state = animationStateRef.current;
+    const rect = e.currentTarget.getBoundingClientRect();
 
     // Global (Window) coordinates for Parallax
     const centerX = window.innerWidth / 2;
@@ -137,7 +163,7 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
     state.mouseX = (e.clientX - centerX) / centerX;
     state.mouseY = (e.clientY - centerY) / centerY;
 
-    // Local (Container) coordinates for Rotation Speed
+    // Local (Section) coordinates for Rotation Speed - uses the outer container
     const contCenterX = rect.left + rect.width / 2;
     const contCenterY = rect.top + rect.height / 2;
     const localX = (e.clientX - contCenterX) / (rect.width / 2); 
@@ -159,56 +185,76 @@ const SkillsSphere = ({ skillsData }: { skillsData: Skill[] }) => {
     }
   };
 
-  // Helper for item hover
-  const handleItemHover = (e: React.MouseEvent<HTMLDivElement>, color: string) => {
-    const isDark = document.documentElement.classList.contains('dark');
-    e.currentTarget.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
-    e.currentTarget.style.background = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.9)';
-    e.currentTarget.style.zIndex = '10000'; // Force to top
-    const icon = e.currentTarget.querySelector('i');
-    if (icon) icon.style.color = color;
-  };
-
-  const handleItemLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    const isDark = document.documentElement.classList.contains('dark');
-    e.currentTarget.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(229, 231, 235, 1)';
-    e.currentTarget.style.background = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.6)';
-    e.currentTarget.style.zIndex = ''; // Let animation loop handle z-index
-    const icon = e.currentTarget.querySelector('i');
-    if (icon) icon.style.color = '';
-  };
-
   return (
-    <div className="relative w-full flex justify-center items-center overflow-hidden">
-      {/* Main Container */}
-      <div 
-        ref={containerRef}
-        className="relative w-[500px] h-[500px] preserve-3d transition-transform duration-100 ease-out z-10"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Render Skills Declaratively */}
-        {skillsData.map((skill, index) => (
-          <div
-            key={skill.name}
-            ref={(el) => {
-              itemsRef.current[index] = el;
-            }}
-            className="absolute top-0 left-0 flex items-center gap-2 text-gray-700 dark:text-slate-300 font-bold text-xl px-5 py-3 
-                       cursor-pointer select-none whitespace-nowrap 
-                       bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg backdrop-blur-sm shadow-lg
-                       transition-colors duration-300"
-            onMouseEnter={(e) => handleItemHover(e, skill.color)}
-            onMouseLeave={handleItemLeave}
-          >
-            <i className={`${skill.icon} text-3xl transition-colors duration-300`}></i>
-            {skill.name}
+    <div 
+      className="relative w-full flex justify-center items-center overflow-hidden"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* --- DESKTOP VIEW: 3D Sphere --- */}
+      {!isMobile && (
+        <div 
+          ref={containerRef}
+          className="relative w-[500px] h-[500px] preserve-3d transition-transform duration-100 ease-out z-10"
+        >
+          {skillsData.map((skill, index) => (
+            <div
+              key={skill.name}
+              ref={(el) => {
+                itemsRef.current[index] = el;
+              }}
+              className="absolute top-0 left-0 flex items-center gap-2 text-gray-700 dark:text-slate-300 font-bold text-xl px-5 py-3 
+                         pointer-events-none select-none whitespace-nowrap 
+                         bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg backdrop-blur-sm shadow-lg"
+            >
+              <i className={`${skill.icon} text-3xl`} style={{ color: skill.color }}></i>
+              {skill.name}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* --- MOBILE VIEW: Double Parallax Stream --- */}
+      {isMobile && (
+        <div className="relative flex justify-center gap-4 w-full h-[500px] overflow-hidden py-10 px-4 z-10">
+          {/* Column 1: Scrolls Up */}
+          <div className="flex flex-col gap-4 animate-scroll-up">
+            {col1Data.map((skill, index) => (
+              <MobileCard key={`col1-${index}`} skill={skill} />
+            ))}
           </div>
-        ))}
-      </div>
+          
+          {/* Column 2: Scrolls Down */}
+          <div className="flex flex-col gap-4 animate-scroll-down">
+            {col2Data.map((skill, index) => (
+              <MobileCard key={`col2-${index}`} skill={skill} />
+            ))}
+          </div>
+
+          {/* Fade Overlay for Mobile - uses CSS variables for background */}
+          <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white dark:from-[#18181b] to-transparent z-20 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white dark:from-[#18181b] to-transparent z-20 pointer-events-none"></div>
+        </div>
+      )}
 
       <style>{`
         .preserve-3d { transform-style: preserve-3d; }
+        
+        @keyframes scroll-up {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+        @keyframes scroll-down {
+          0% { transform: translateY(-50%); }
+          100% { transform: translateY(0); }
+        }
+        
+        .animate-scroll-up {
+          animation: scroll-up 30s linear infinite;
+        }
+        .animate-scroll-down {
+          animation: scroll-down 30s linear infinite;
+        }
       `}</style>
     </div>
   );
