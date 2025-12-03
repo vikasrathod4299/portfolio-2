@@ -79,7 +79,7 @@ export default function Page({ children, ...customMeta }: Props) {
     setMeta('twitter:title', title);
     setMeta('twitter:description', description);
     setMeta('twitter:image', metaImage);
-    setMeta('twitter:creator', '@vikasrathod');
+    setMeta('twitter:creator', '@vikasxrathod');
 
     // Article-specific
     if (date) setMeta('article:published_time', date, true);
