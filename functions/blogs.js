@@ -16,7 +16,7 @@ export async function onRequest(context) {
 
   const NOTION_API_URL = `https://api.notion.com/v1/data_sources/${VITE_NOTION_DATA_SOURCE_ID}/query`
   const cacheKey =  'all_posts'
-  const cacheTTL = 60 * 30 // 30 minutes
+  const cacheTTL = 60 * 60 * 24 // 1 day (86400 seconds)
 
   try {
 
@@ -70,8 +70,8 @@ export async function onRequest(context) {
       }
     })
 
-    // Store in cache
-    await BLOG_CACHE.put(cacheKey, JSON.stringify(posts))
+    // Store in cache with 1 day expiration
+    await BLOG_CACHE.put(cacheKey, JSON.stringify(posts), { expirationTtl: cacheTTL })
 
     return new Response(JSON.stringify({ success: true, posts }), {
       headers: { 'Content-Type': 'application/json' },

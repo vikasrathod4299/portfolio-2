@@ -24,7 +24,7 @@ export async function onRequest(context) {
   }
 
   const cacheKey = `post_${slug}`
-  const cacheTTL = 60 * 30
+  const cacheTTL = 60 * 60 * 24 // 1 day (86400 seconds)
 
   try {
 
@@ -126,8 +126,8 @@ export async function onRequest(context) {
       content: blocksJson.results || [],
     }
 
-    // Cache the result
-    await BLOG_CACHE.put(cacheKey, JSON.stringify(post))
+    // Cache the result with 1 day expiration
+    await BLOG_CACHE.put(cacheKey, JSON.stringify(post), { expirationTtl: cacheTTL })
 
 
     return new Response(
