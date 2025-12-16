@@ -8,9 +8,9 @@
     "startDate": "May 2023",
     "endDate": "Present",
     "descriptions": [
-      "I worked as a software developer while i was in my Bachelor's degree.",
-      "I mostly worked with React and TypeScript.",
-      "Communicated with a lot of engineers and designers. Developed enterprise financial applications."
+      "Architected a scalable event-driven pipeline using Node.js, AWS SQS, and ECS, successfully decoupling heavy media processing to handle 500+ concurrent jobs with 99.9% system reliability.",
+      "Optimized API response times by 50% by implementing S3 Multipart pre-signed URLs for direct chunked uploads and offloading CPU-intensive tasks to asynchronous Python background workers.",
+      "Engineered a multi-tenant SaaS platform for police departments, implementing a strict hierarchical RBAC system (Admin → Supervisor → Employee) to ensure granular data security and isolated view access."
     ]
   },
   {
@@ -22,9 +22,8 @@
     "startDate": "Aug 2022",
     "endDate": "Feb 2023",
     "descriptions": [
-      "Developed web-based applications for Suleyman Demirel University.",
-      "Designed and developed a statistics module for student information system.",
-      "Created a student communities forum with a team of student developers and lead the team as a team manager."
+      "Developed a multi-step registration workflow for an insurance platform using React.js and Tailwind CSS, successfully managing form state and API integrations under the mentorship of senior developers.",
+      "Gained production-ready proficiency in the MERN stack and PostgreSQL through intensive training, rapidly applying these skills to build responsive UI components and optimized backend schemas"
     ]
   }
 ]
