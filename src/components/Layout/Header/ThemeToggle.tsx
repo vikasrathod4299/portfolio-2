@@ -5,10 +5,11 @@ export default function ThemeToggle() {
   const { theme, toggleTheme} = useTheme()
   return (
     <button
-      className="rounded px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800"
+      className="relative flex items-center justify-center size-9 rounded-full bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-white/20 transition-all duration-200"
       onClick={toggleTheme}
+      aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <IconSun /> : <IconMoon />}
+      {theme === 'dark' ? <IconSun size={18} /> : <IconMoon size={18} />}
     </button>
   )
 }
