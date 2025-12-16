@@ -65,9 +65,9 @@ code {
 }
 
 .dark {
-  --background: oklch(21.033% 0.00588 285.832);
+  --background: #18181b;
   --foreground: oklch(98.511% 0.00011 271.152);
-  --card: oklch(0.141 0.005 285.823);
+  --card: #18181b;
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.141 0.005 285.823);
   --popover-foreground: oklch(0.985 0 0);
@@ -135,7 +135,7 @@ code {
   html,
   body,
   #root {
-    @apply bg-background text-zinc-600 antialiased dark:bg-zinc-900 dark:text-zinc-400;
+    @apply bg-background text-zinc-600 antialiased dark:bg-[#18181b] dark:text-zinc-400;
   }
 
   #root {

@@ -4,7 +4,7 @@ import { NotionImage } from './Notion/NotionImage';
 
 
 const SkeletonPostCard = () => (
-  <div className="flex w-full animate-pulse rounded-sm border border-zinc-300/30 dark:border-zinc-700/30 shadow-sm bg-zinc-100 dark:bg-zinc-900">
+  <div className="flex w-full animate-pulse rounded-sm border border-zinc-300/30 dark:border-zinc-700/30 shadow-sm bg-zinc-100 dark:bg-[#18181b]">
     {/* Thumbnail placeholder */}
     <div className="p-3">
       <div className="w-24 h-24 rounded-sm bg-zinc-200 dark:bg-zinc-700/40"></div>

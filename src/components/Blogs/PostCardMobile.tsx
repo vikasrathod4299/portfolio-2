@@ -3,7 +3,7 @@ import { NotionImage } from "./Notion/NotionImage";
 
 const SkeletonPostCardMobile = () => { 
   return (
-      <div className="max-w-sm rounded-sm overflow-hidden border bg-white dark:bg-zinc-900 border-gray-100 dark:border-gray-700 sm:hidden animate-pulse">
+      <div className="max-w-sm rounded-sm overflow-hidden border bg-white dark:bg-[#18181b] border-gray-100 dark:border-gray-700 sm:hidden animate-pulse">
       {/* Thumbnail Skeleton */}
       <div className="w-full h-56 bg-gray-200 dark:bg-zinc-800" />
 
@@ -29,7 +29,7 @@ const SkeletonPostCardMobile = () => {
 const PostCardMobile = ({thumbnail, title, description, slug}: {thumbnail: string, title: string, description: string, slug: string, isCover: boolean}) => {
 
   return (
-    <div className="max-w-sm rounded-sm overflow-hidden border bg-white dark:bg-zinc-900 border-gray-100 dark:border-gray-700 transition-all duration-300 sm:hidden">
+    <div className="max-w-sm rounded-sm overflow-hidden border bg-white dark:bg-[#18181b] border-gray-100 dark:border-gray-700 transition-all duration-300 sm:hidden">
       
       <NotionImage src={thumbnail} alt={title}  className="object-cover w-full h-56 rounded-none"/>
 

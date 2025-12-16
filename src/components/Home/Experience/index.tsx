@@ -9,7 +9,7 @@ export default function ExperienceSection() {
   const [activeExperience, setActiveExperience] = useState(0);
 
   return (
-    <Section label="Where I've Worked">
+    <Section id="experience" label="Where I've Worked">
       {/* Mobile: Horizontal scroll tabs */}
       <div className="md:hidden flex flex-col gap-6 animate-fade-in">
         <div className="flex overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">

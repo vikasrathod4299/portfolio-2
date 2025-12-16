@@ -6,9 +6,10 @@ import SkillsSphere from './SkillsSphere';
 export default function SkillsSection() {
   return (
     <Section
+      id="skills"
       className="mt-16"
       label="Skills"
-      description="Here are a few technologies I’ve been working with recently:"
+      description="Here are a few technologies I've been working with recently:"
     >
      <SkillsSphere skillsData={skills} />
     </Section>

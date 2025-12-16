@@ -66,7 +66,7 @@ export default function Profile() {
             fetchPriority="high"
             onLoad={() => setImageLoaded(true)}
             className={classNames(
-              "relative z-10 h-full w-full object-cover rounded-lg border-2 border-gray-800 dark:border-white/80 bg-white dark:bg-zinc-900 transition-opacity duration-300",
+              "relative z-10 h-full w-full object-cover rounded-lg border-2 border-gray-800 dark:border-white/80 bg-white dark:bg-[#18181b] transition-opacity duration-300",
               imageLoaded ? "opacity-100" : "opacity-0"
             )}
           />

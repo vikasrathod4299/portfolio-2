@@ -8,7 +8,7 @@ export default function Select({ children, className, ...rest }: Props) {
     <select
       className={classNames(
         'rounded border-zinc-300 bg-zinc-50',
-        'dark:border-zinc-600 dark:bg-zinc-800',
+        'dark:border-zinc-600 dark:bg-[#18181b]',
         'focus:border-primary-500 focus:ring-primary-500',
         'dark:focus:border-primary-700 dark:focus:ring-primary-700',
         className
